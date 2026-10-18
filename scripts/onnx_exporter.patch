@@ -1,0 +1,26 @@
+diff --git a/scripts/export_flow_lm.py b/scripts/export_flow_lm.py
+index dd3043e..2ed7fc2 100644
+--- a/scripts/export_flow_lm.py
++++ b/scripts/export_flow_lm.py
+@@ -261,7 +261,7 @@ def main():
+     os.makedirs(args.output_dir, exist_ok=True)
+ 
+     print("Loading model...")
+-    tts = TTSModel.load_model(language=args.language, config=args.config).cpu().eval()
++    tts = TTSModel.load_model(language=None if args.config else args.language, config=args.config).cpu().eval()
+     bundle_name = Path(args.config).stem if args.config is not None else args.language
+             
+     # Init patched state
+diff --git a/scripts/export_mimi_and_conditioner.py b/scripts/export_mimi_and_conditioner.py
+index 771cd62..d7c9a41 100644
+--- a/scripts/export_mimi_and_conditioner.py
++++ b/scripts/export_mimi_and_conditioner.py
+@@ -307,7 +307,7 @@ def export_models(output_dir="onnx_models", language=DEFAULT_LANGUAGE, config=No
+     os.makedirs(output_dir, exist_ok=True)
+ 
+     print("Loading model...")
+-    tts_model = TTSModel.load_model(language=language, config=config)
++    tts_model = TTSModel.load_model(language=None if config else language, config=config)
+     bundle_name = Path(config).stem if config is not None else language
+ 
+     tts_model.eval()

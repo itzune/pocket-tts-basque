@@ -178,3 +178,15 @@ Model license CC-BY-4.0 (as upstream); card documents BSSD provenance (teacher C
   threads (3.4-3.7x real time), plus the same 3 sentences for Maider and Antton with Piper (itzune eu-*-medium
   ONNX voices) and OmniVoice (clone from the same prompt clips). ASR check of every demo clip: all content
   sentences WER 0 for our model and OmniVoice; Piper 0-0.25.
+- 2026-10-18 20:55 UTC: **ONNX export released**: https://huggingface.co/itzune/pocket-tts-basque-onnx (public),
+  for onnxruntime without PyTorch. `scripts/export_onnx.sh`: lomotron/pocket-tts-onnx-export @ 8f52199 plus
+  `scripts/onnx_exporter.patch` (upstream passed the default `--language` together with `--config`); the
+  exporter's vendored pocket_tts rejects `default_temperature`, so it is dropped for the export (runtimes sample
+  at 0.3). All graphs verified against torch within tolerance (`--exact` fails on 3e-6 float noise only); int8 =
+  dynamic MatMul quantization. Bundle in KevinAHM/pocket-tts-onnx format (with `bos_before_voice.npy`) + the five
+  voice states (they load as-is in the ONNX runtime) + its reference runtime `pocket_tts_onnx.py` (Apache-2.0,
+  pinned revision). Laptop CPU, 2 threads, `scripts/bench_onnx.py`: int8 0.07 s first audio, 4.4x real time; fp32
+  0.09 s, 3.5x (PyTorch on the same machine: 6-8x). Content check: parakeet ASR transcribes the benchmark and
+  all five voices correctly. Not sherpa-onnx compatible as is (sherpa does not apply the voice BOS). The model
+  card's snippet was run verbatim from an empty HF cache: the runtime loads `mimi_encoder.onnx` and
+  `text_conditioner.onnx` in fp32 even for int8, so the card's download pattern includes them.

@@ -10,6 +10,7 @@ https://itzune.eus/pocket-tts-basque/**
 | | Hugging Face | What it is |
 |---|---|---|
 | **Pocket TTS Basque** | [itzune/pocket-tts-basque](https://huggingface.co/itzune/pocket-tts-basque) | 6-layer model (~100 M parameters) for real-time CPU use, five bundled voices, zero-shot cloning |
+| ONNX export | [itzune/pocket-tts-basque-onnx](https://huggingface.co/itzune/pocket-tts-basque-onnx) | the same model for onnxruntime (fp32 + int8), streaming on CPU without PyTorch |
 | Teacher | [itzune/pocket-tts-basque-24l](https://huggingface.co/itzune/pocket-tts-basque-24l) | 24-layer model it was distilled from |
 | Dataset | [itzune/bssd](https://huggingface.co/datasets/itzune/bssd) | 470 h of synthetic Basque speech, CC BY-SA 4.0 |
 
@@ -51,6 +52,10 @@ CPU speed of the 6-layer model (generation only, x86 server CPU): 3.5× real tim
    speaker similarity, failure rate), `scripts/compare_checkpoints.sh`, `scripts/bench_cpu.py`,
    `scripts/export_teacher.py`, `scripts/export_voices.py`, `scripts/upload_hf.py`; release sources in
    `release/`.
+5. **ONNX export**: `scripts/export_onnx.sh` exports the released model with the community
+   [pocket-tts-onnx-export](https://github.com/lomotron/pocket-tts-onnx-export) exporter (pinned, with
+   `scripts/onnx_exporter.patch`), verifies every graph against PyTorch, quantizes to int8 and assembles
+   the release folder; `scripts/bench_onnx.py` measures it without PyTorch.
 
 The training code is the official `kyutai-labs/pocket-tts` repository (v3.3.0, `training/`), checked out
 next to this one; the configs here extend its `finetune_language.yaml` and `depth_distill.yaml`. Run helpers
