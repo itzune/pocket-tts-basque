@@ -24,7 +24,7 @@ VOICE_INFO = {"Maider": ("female", "HiTZ-Aholab studio speaker"), "Antton": ("ma
 def audio(path):
     if not os.path.exists(os.path.join(DOCS, path)):
         return '<span class="missing">clip missing</span>'
-    return f'<audio controls preload="none" src="{path}"></audio>'
+    return f'<audio controls preload="metadata" src="{path}"></audio>'
 
 
 def esc(s):
@@ -46,8 +46,10 @@ for v in cfg["voices"]:
 cmp_rows = []
 for v in cfg["compare_voices"]:
     for c in cfg["common"]:
-        cmp_rows.append(f'''<tr><td class="sent"><span class="vname">{v}</span><p class="eu">{esc(c["text"])}</p></td>
-<td>{audio(f"audio/pocket/{v}_{c['id']}.mp3")}</td><td>{audio(f"audio/piper/{v}_{c['id']}.mp3")}</td><td>{audio(f"audio/omnivoice/{v}_{c['id']}.mp3")}</td></tr>''')
+        cmp_rows.append(f'''<div class="cmp"><p class="eu"><span class="vname">{v}</span> {esc(c["text"])}</p><div class="cmp-grid">
+<div><span class="syslabel">Pocket TTS Basque</span>{audio(f"audio/pocket/{v}_{c['id']}.mp3")}</div>
+<div><span class="syslabel">Piper</span>{audio(f"audio/piper/{v}_{c['id']}.mp3")}</div>
+<div><span class="syslabel">OmniVoice</span>{audio(f"audio/omnivoice/{v}_{c['id']}.mp3")}</div></div></div>''')
 
 speeds = [t["x_realtime"] for t in tim_pocket["clips"].values()]
 mean_speed = f"{sum(speeds)/len(speeds):.1f}" if speeds else "—"
@@ -71,44 +73,45 @@ pre{{background:var(--code);padding:14px;border-radius:10px;overflow:auto;font-s
 .voice{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:12px 0}}.voice ul{{list-style:none;margin:0;padding:0}}.voice li{{display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}}.voice li:first-child{{border-top:0}}
 .eu{{margin:0;font-style:italic}}.speed{{grid-column:1/-1;color:var(--muted);font-size:.85rem}}.use{{margin:10px 0 0;color:var(--muted);font-size:.9rem}}
 audio{{width:260px;max-width:100%;height:36px}}.missing{{color:var(--muted);font-size:.85rem}}
-table{{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}}th,td{{padding:10px 12px;border-top:1px solid var(--line);vertical-align:middle;text-align:left}}th{{background:var(--code);font-weight:600}}td audio{{width:200px}}.sent{{min-width:220px}}.vname{{display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700}}
+.cmp{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:12px 0}}.cmp .eu{{margin:0 0 10px}}.cmp-grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px 16px}}.cmp-grid div{{display:flex;flex-direction:column;gap:4px}}.cmp-grid audio{{width:100%}}.syslabel{{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}}.vname{{display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700;font-style:normal;margin-right:6px}}
+nav.toc{{margin:18px 0 0;font-size:.95rem}}nav.toc a{{margin-right:14px;text-decoration:none;border-bottom:1px solid var(--line)}}
 .sys{{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:14px 0}}.sys div{{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.92rem}}.sys b{{display:block;margin-bottom:4px}}
 footer{{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}}a{{color:var(--accent)}}
-@media (max-width:640px){{.voice li{{grid-template-columns:1fr}}table,thead,tbody,tr,td,th{{display:block}}thead{{display:none}}td{{border-top:0;padding:4px 12px}}tr{{border-top:1px solid var(--line);padding:8px 0}}td audio{{width:100%}}td:not(.sent)::before{{content:attr(data-sys);display:block;font-size:.75rem;color:var(--muted)}}}}
+@media (max-width:640px){{.voice li{{grid-template-columns:1fr}}audio{{width:100%}}}}
 </style>
 </head>
 <body><main>
 <header>
 <h1>Pocket TTS Basque <small>Euskarazko ahots-sintesia, denbora errealean zure ordenagailuan · Open Basque text-to-speech that runs in real time on a CPU</small></h1>
 <div class="links"><a class="primary" href="{HF}">Model on Hugging Face</a><a href="{GH}">Code on GitHub</a><a href="{DS}">BSSD dataset</a><a href="{HF24}">24-layer teacher</a></div>
+<nav class="toc"><a href="#try">Try it</a><a href="#voices">Voices</a><a href="#compare">Comparison with Piper and OmniVoice</a><a href="#built">How it was built</a></nav>
 <div class="facts"><div><b>~100 M</b><span>parameters, 6-layer backbone</span></div><div><b>{mean_speed}×</b><span>real time on 2 CPU threads (fp32, this page's clips)</span></div><div><b>5</b><span>bundled voices + zero-shot cloning</span></div><div><b>CC BY 4.0</b><span>model weights</span></div></div>
 <p>Pocket TTS Basque is a Basque (euskara) adaptation of Kyutai's <a href="https://github.com/kyutai-labs/pocket-tts">Pocket TTS</a>, trained on the synthetic <a href="{DS}">BSSD</a> dataset (470 h, CC BY-SA 4.0). A 24-layer teacher was fine-tuned first and then distilled into this 6-layer model, which keeps the teacher's pronunciation and prosody while running several times faster than real time on an ordinary laptop CPU. All clips on this page were generated by the released model on 2 CPU threads; nothing was hand-picked.</p>
 </header>
 
-<h2>Try it</h2>
+<h2 id="try">Try it</h2>
 <pre><code># with uv installed, no setup needed
 uvx pocket-tts generate --config hf://itzune/pocket-tts-basque/basque.yaml \\
   --voice hf://itzune/pocket-tts-basque/voices/Maider.safetensors \\
   --text "Kaixo! Hau euskarazko ahots sintetiko bat da." --output kaixo.wav
 
 # your own voice: 5-10 s of clean Basque speech as the prompt
-uvx pocket-tts generate --config hf://itzune/pocket-tts-basque/basque.yaml --voice my_voice.wav --text "Kaixo!" --output kaixo.wav</code></pre>
+uvx pocket-tts generate --config hf://itzune/pocket-tts-basque/basque.yaml \\
+  --voice my_voice.wav --text "Kaixo!" --output kaixo.wav</code></pre>
 <p>Write the text as it should be read (numbers, dates and abbreviations in words). Python usage, evaluation details and licences are in the <a href="{HF}">model card</a>.</p>
 
-<h2>Voices</h2>
+<h2 id="voices">Voices</h2>
 <p>Maider and Antton are the two professional speakers of the <a href="https://zenodo.org/records/17952596">HiTZ-Aholab studio corpus</a> (CC BY 4.0). Nahia, Ane and Aitor are synthetic voices from the BSSD voice bank. Each reads the same three sentences: a news item, a narrative line and a question with numbers.</p>
 {"".join(voices_html)}
 
-<h2>Comparison with other Basque TTS</h2>
+<h2 id="compare">Comparison with other Basque TTS</h2>
 <p>The same sentences and the same two voices, synthesised with three systems. Piper uses the community <a href="https://huggingface.co/itzune/maider-tts">Maider</a> and <a href="https://huggingface.co/itzune/antton-tts">Antton</a> voices trained on the HiTZ-Aholab recordings; OmniVoice clones the voice from the very same 5-7 s prompt clip that our voice states were built from (it is also the system that generated the BSSD training data, i.e. our teacher's teacher).</p>
 <div class="sys"><div><b>Pocket TTS Basque (this model)</b>~100 M parameters, 438 MB fp32 (int8 available) · CPU, several times faster than real time · zero-shot voice cloning · CC BY 4.0</div>
 <div><b>Piper (VITS)</b>~20 M parameters per voice, ~60 MB ONNX · CPU, very fast · fixed voices, espeak-ng phonemes · voices Apache-2.0</div>
 <div><b>OmniVoice (k2-fsa)</b>~0.6 B parameters · needs a GPU for practical use · zero-shot cloning, 100+ languages · CC BY-NC (weights)</div></div>
-<table><thead><tr><th>Sentence</th><th>Pocket TTS Basque</th><th>Piper</th><th>OmniVoice</th></tr></thead><tbody>
 {"".join(cmp_rows)}
-</tbody></table>
 
-<h2>How it was built</h2>
+<h2 id="built">How it was built</h2>
 <ol>
 <li><b>Data.</b> <a href="{DS}">BSSD</a>: 470 h of synthetic Basque speech generated with OmniVoice from curated Basque text, 2,400+ voices (a synthetic voice bank plus consented real prompts), filtered with two Basque ASR systems, UTMOS and speaker checks. Word alignments from a Basque wav2vec2 model.</li>
 <li><b>Teacher.</b> Kyutai's 24-layer English Pocket TTS fine-tuned for Basque with a new 4000-token SentencePiece tokenizer (official new-language recipe). Released as <a href="{HF24}">pocket-tts-basque-24l</a>.</li>
