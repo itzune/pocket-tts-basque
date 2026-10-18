@@ -87,7 +87,7 @@ failure mode of prompt-conditioned models. It occurs more often with some refere
   chosen among the 40 k-80 k checkpoints by the evaluation above (later checkpoints had higher failure
   rates on unseen voices).
 
-Training code, configs and evaluation scripts: https://github.com/xezpeleta/pocket-tts-eu
+Training code, configs, evaluation scripts and a demo page with audio samples and a comparison with Piper and OmniVoice: https://github.com/itzune/pocket-tts-basque (demo: https://itzune.eus/pocket-tts-basque/)
 
 ## Limitations
 

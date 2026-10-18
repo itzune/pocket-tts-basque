@@ -105,7 +105,7 @@ slightly lower naturalness score, and about 2x faster on GPU and far faster on C
 - Data: BSSD train split (about 350 k utterances, 450 h of synthetic Basque speech, 2,400+ voices).
 - Tokenizer: SentencePiece, 4000 tokens, trained on the BSSD transcripts (shared with the teacher).
 
-Training code, configs and evaluation scripts: https://github.com/xezpeleta/pocket-tts-eu
+Training code, configs, evaluation scripts and a demo page with audio samples and a comparison with Piper and OmniVoice: https://github.com/itzune/pocket-tts-basque (demo: https://itzune.eus/pocket-tts-basque/)
 
 ## Limitations
 
