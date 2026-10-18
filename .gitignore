@@ -1,0 +1,14 @@
+.env
+logs/
+data/
+wandb/
+__pycache__/
+.pytest_cache/
+.venv/
+*.pt
+*.ckpt
+*.safetensors
+# audio: only the committed demo mp3s and the small samples
+*.wav
+!samples/**/*.wav
+docs/audio/**/*.wav

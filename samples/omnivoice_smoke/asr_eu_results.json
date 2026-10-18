@@ -1,0 +1,38 @@
+[
+ {
+  "file": "auto1_s16.wav",
+  "wer": 0.125,
+  "cer": 0.053,
+  "hyp": "Kaixo nola zaude gaur bihar ikusiko gara haur."
+ },
+ {
+  "file": "auto1_s32.wav",
+  "wer": 0.0,
+  "cer": 0.0,
+  "hyp": "Kaixo nola zaude gaur, bihar ikusiko gara agur."
+ },
+ {
+  "file": "auto2_s32.wav",
+  "wer": 0.0,
+  "cer": 0.0,
+  "hyp": "Euskara munduko hizkuntzarik zaharrenetarikoa da eta Euskal Herrian hitz egiten da."
+ },
+ {
+  "file": "design_f_s32.wav",
+  "wer": 0.0,
+  "cer": 0.0,
+  "hyp": "Gaur goizean euria egin du Donostian, baina arratsaldean eguzkia atera da."
+ },
+ {
+  "file": "design_m_s32.wav",
+  "wer": 0.2,
+  "cer": 0.026,
+  "hyp": "Teknikako lantaldeak proiektu berri bat aurkeztu du lanbide heziketako ikastetxentzat."
+ },
+ {
+  "file": "long_s32.wav",
+  "wer": 0.04,
+  "cer": 0.006,
+  "hyp": "Txirrindularitza oso kirol ezaguna da Euskal Herrian, urtero milaka zale bideak betetzen dituzte txirrindulariei animoak emateko, batez ere mendateetan, Euskal Herriko itzulia maiatzean jokatzen da."
+ }
+]

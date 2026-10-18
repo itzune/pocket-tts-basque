@@ -1,0 +1,10 @@
+[project]
+name = "pocket-tts-eu"
+version = "0.1.0"
+description = "Basque Pocket TTS: training recipes for a CPU real-time Basque TTS student (dataset pipeline lives in ../../itzune/bssd)"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]

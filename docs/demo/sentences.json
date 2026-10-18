@@ -1,0 +1,28 @@
+{
+  "intro": "Kaixo! {name} naiz, euskarazko ahots sintetiko bat; pozik nago zurekin hitz egiteaz.",
+  "common": [
+    {
+      "id": "news",
+      "text": "Bihar, goizeko hamarretan, Donostiako liburutegi berria inauguratuko dute, eta sarrera doakoa izango da."
+    },
+    {
+      "id": "story",
+      "text": "Mendian galdu ginenean, ilargiaren argiak lagundu zigun bidea aurkitzen; isiltasuna erabatekoa zen."
+    },
+    {
+      "id": "question",
+      "text": "Zenbat balio du txartel horrek? Hogeita bost euro, baina ikasleek beherapena dute."
+    }
+  ],
+  "voices": [
+    "Maider",
+    "Antton",
+    "Nahia",
+    "Ane",
+    "Aitor"
+  ],
+  "compare_voices": [
+    "Maider",
+    "Antton"
+  ]
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "name": "auto1",
+  "steps": 32,
+  "gen_s": 1.09,
+  "audio_s": 2.65,
+  "rtf": 0.41,
+  "peak_vram_MiB": 1985
+ },
+ {
+  "name": "auto1",
+  "steps": 16,
+  "gen_s": 0.28,
+  "audio_s": 2.54,
+  "rtf": 0.111,
+  "peak_vram_MiB": 1985
+ },
+ {
+  "name": "auto2",
+  "steps": 32,
+  "gen_s": 0.58,
+  "audio_s": 4.5,
+  "rtf": 0.128,
+  "peak_vram_MiB": 2018
+ },
+ {
+  "name": "design_f",
+  "steps": 32,
+  "gen_s": 0.56,
+  "audio_s": 4.8,
+  "rtf": 0.116,
+  "peak_vram_MiB": 2018
+ },
+ {
+  "name": "design_m",
+  "steps": 32,
+  "gen_s": 0.57,
+  "audio_s": 5.08,
+  "rtf": 0.111,
+  "peak_vram_MiB": 2021
+ },
+ {
+  "name": "long",
+  "steps": 32,
+  "gen_s": 0.61,
+  "audio_s": 11.63,
+  "rtf": 0.052,
+  "peak_vram_MiB": 2122
+ }
+]

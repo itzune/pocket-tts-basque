@@ -1,0 +1,153 @@
+{
+ "summary": {
+  "named": {
+   "wer": 0.1516,
+   "cer": 0.0949,
+   "utmos": 3.5671,
+   "spk_sim": 0.9579,
+   "rtf": 0.3153,
+   "n": 320,
+   "fail_rate": 0.0969,
+   "wer_median": 0.0,
+   "wer_ok": 0.0562,
+   "wer_conformer": 0.1446,
+   "cer_conformer": 0.094,
+   "fail_rate_conformer": 0.0969
+  },
+  "held_out": {
+   "wer": 0.1278,
+   "cer": 0.0794,
+   "utmos": 3.596,
+   "spk_sim": 0.9607,
+   "rtf": 0.316,
+   "n": 200,
+   "fail_rate": 0.09,
+   "wer_median": 0.0,
+   "wer_ok": 0.0497,
+   "wer_conformer": 0.1152,
+   "cer_conformer": 0.0742,
+   "fail_rate_conformer": 0.08
+  }
+ },
+ "per_voice": {
+  "euf_05679": {
+   "wer": 0.163,
+   "cer": 0.098,
+   "utmos": 3.791,
+   "spk_sim": 0.964,
+   "fails": 5,
+   "wer_conformer": 0.147,
+   "fails_conformer": 5
+  },
+  "Antton": {
+   "wer": 0.131,
+   "cer": 0.083,
+   "utmos": 3.732,
+   "spk_sim": 0.949,
+   "fails": 4,
+   "wer_conformer": 0.142,
+   "fails_conformer": 4
+  },
+  "Unai": {
+   "wer": 0.116,
+   "cer": 0.073,
+   "utmos": 3.048,
+   "spk_sim": 0.948,
+   "fails": 3,
+   "wer_conformer": 0.108,
+   "fails_conformer": 3
+  },
+  "Aitor": {
+   "wer": 0.045,
+   "cer": 0.019,
+   "utmos": 3.544,
+   "spk_sim": 0.967,
+   "fails": 1,
+   "wer_conformer": 0.048,
+   "fails_conformer": 1
+  },
+  "Ane": {
+   "wer": 0.223,
+   "cer": 0.138,
+   "utmos": 3.398,
+   "spk_sim": 0.97,
+   "fails": 6,
+   "wer_conformer": 0.221,
+   "fails_conformer": 6
+  },
+  "Nahia": {
+   "wer": 0.049,
+   "cer": 0.008,
+   "utmos": 3.595,
+   "spk_sim": 0.973,
+   "fails": 0,
+   "wer_conformer": 0.04,
+   "fails_conformer": 0
+  },
+  "bank0070": {
+   "wer": 0.186,
+   "cer": 0.097,
+   "utmos": 3.423,
+   "spk_sim": 0.958,
+   "fails": 6,
+   "wer_conformer": 0.149,
+   "fails_conformer": 4
+  },
+  "Maider": {
+   "wer": 0.044,
+   "cer": 0.016,
+   "utmos": 3.939,
+   "spk_sim": 0.963,
+   "fails": 0,
+   "wer_conformer": 0.045,
+   "fails_conformer": 0
+  },
+  "Mikel": {
+   "wer": 0.252,
+   "cer": 0.18,
+   "utmos": 3.671,
+   "spk_sim": 0.946,
+   "fails": 7,
+   "wer_conformer": 0.232,
+   "fails_conformer": 7
+  },
+  "Jon": {
+   "wer": 0.352,
+   "cer": 0.242,
+   "utmos": 3.61,
+   "spk_sim": 0.946,
+   "fails": 10,
+   "wer_conformer": 0.32,
+   "fails_conformer": 10
+  },
+  "eum_08886": {
+   "wer": 0.025,
+   "cer": 0.005,
+   "utmos": 3.689,
+   "spk_sim": 0.96,
+   "fails": 0,
+   "wer_conformer": 0.019,
+   "fails_conformer": 0
+  },
+  "bank0083": {
+   "wer": 0.195,
+   "cer": 0.171,
+   "utmos": 3.517,
+   "spk_sim": 0.962,
+   "fails": 6,
+   "wer_conformer": 0.202,
+   "fails_conformer": 6
+  },
+  "bank0027": {
+   "wer": 0.07,
+   "cer": 0.026,
+   "utmos": 3.56,
+   "spk_sim": 0.96,
+   "fails": 1,
+   "wer_conformer": 0.059,
+   "fails_conformer": 1
+  }
+ },
+ "config": "configs/basque_24l_infer.yaml",
+ "checkpoint": "/root/runs/basque_24l/keep/checkpoint_00050000.pt"
+}

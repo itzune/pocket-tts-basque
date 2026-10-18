@@ -1,0 +1,102 @@
+{
+ "summary": {
+  "named": {
+   "wer": 0.099,
+   "cer": 0.0635,
+   "utmos": 3.6044,
+   "spk_sim": 0.9575,
+   "rtf": 0.909,
+   "n": 128
+  },
+  "held_out": {
+   "wer": 0.0903,
+   "cer": 0.0677,
+   "utmos": 3.6085,
+   "spk_sim": 0.9605,
+   "rtf": 0.903,
+   "n": 80
+  }
+ },
+ "per_voice": {
+  "bank0070": {
+   "wer": 0.042,
+   "cer": 0.017,
+   "utmos": 3.41,
+   "spk_sim": 0.954
+  },
+  "bank0027": {
+   "wer": 0.129,
+   "cer": 0.073,
+   "utmos": 3.579,
+   "spk_sim": 0.951
+  },
+  "bank0083": {
+   "wer": 0.109,
+   "cer": 0.114,
+   "utmos": 3.548,
+   "spk_sim": 0.96
+  },
+  "euf_05679": {
+   "wer": 0.161,
+   "cer": 0.134,
+   "utmos": 3.804,
+   "spk_sim": 0.969
+  },
+  "Aitor": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "utmos": 3.615,
+   "spk_sim": 0.968
+  },
+  "Mikel": {
+   "wer": 0.125,
+   "cer": 0.07,
+   "utmos": 3.684,
+   "spk_sim": 0.953
+  },
+  "Antton": {
+   "wer": 0.085,
+   "cer": 0.063,
+   "utmos": 3.777,
+   "spk_sim": 0.956
+  },
+  "Unai": {
+   "wer": 0.056,
+   "cer": 0.033,
+   "utmos": 3.071,
+   "spk_sim": 0.938
+  },
+  "Jon": {
+   "wer": 0.359,
+   "cer": 0.254,
+   "utmos": 3.634,
+   "spk_sim": 0.943
+  },
+  "Maider": {
+   "wer": 0.0,
+   "cer": 0.0,
+   "utmos": 3.898,
+   "spk_sim": 0.958
+  },
+  "Nahia": {
+   "wer": 0.076,
+   "cer": 0.026,
+   "utmos": 3.659,
+   "spk_sim": 0.97
+  },
+  "Ane": {
+   "wer": 0.09,
+   "cer": 0.062,
+   "utmos": 3.498,
+   "spk_sim": 0.974
+  },
+  "eum_08886": {
+   "wer": 0.01,
+   "cer": 0.001,
+   "utmos": 3.702,
+   "spk_sim": 0.969
+  }
+ },
+ "config": "configs/basque_24l_infer.yaml",
+ "checkpoint": "/root/runs/basque_24l/checkpoint_00030000.pt"
+}

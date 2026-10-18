@@ -1,0 +1,121 @@
+{
+ "summary": {
+  "named": {
+   "wer": 0.0682,
+   "cer": 0.035,
+   "utmos": 3.5121,
+   "spk_sim": 0.9584,
+   "rtf": 0.4101,
+   "n": 128,
+   "fail_rate": 0.0312,
+   "wer_median": 0.0,
+   "wer_ok": 0.0428
+  },
+  "held_out": {
+   "wer": 0.0315,
+   "cer": 0.0082,
+   "utmos": 3.526,
+   "spk_sim": 0.9559,
+   "rtf": 0.409,
+   "n": 80,
+   "fail_rate": 0.0,
+   "wer_median": 0.0,
+   "wer_ok": 0.0315
+  }
+ },
+ "per_voice": {
+  "Maider": {
+   "wer": 0.008,
+   "cer": 0.001,
+   "utmos": 3.892,
+   "spk_sim": 0.953,
+   "fails": 0
+  },
+  "Jon": {
+   "wer": 0.179,
+   "cer": 0.103,
+   "utmos": 3.482,
+   "spk_sim": 0.955,
+   "fails": 2
+  },
+  "bank0070": {
+   "wer": 0.03,
+   "cer": 0.013,
+   "utmos": 3.203,
+   "spk_sim": 0.946,
+   "fails": 0
+  },
+  "Nahia": {
+   "wer": 0.022,
+   "cer": 0.004,
+   "utmos": 3.524,
+   "spk_sim": 0.966,
+   "fails": 0
+  },
+  "eum_08886": {
+   "wer": 0.013,
+   "cer": 0.003,
+   "utmos": 3.732,
+   "spk_sim": 0.965,
+   "fails": 0
+  },
+  "euf_05679": {
+   "wer": 0.015,
+   "cer": 0.003,
+   "utmos": 3.786,
+   "spk_sim": 0.959,
+   "fails": 0
+  },
+  "Unai": {
+   "wer": 0.092,
+   "cer": 0.043,
+   "utmos": 2.954,
+   "spk_sim": 0.942,
+   "fails": 0
+  },
+  "Mikel": {
+   "wer": 0.027,
+   "cer": 0.005,
+   "utmos": 3.612,
+   "spk_sim": 0.954,
+   "fails": 0
+  },
+  "Ane": {
+   "wer": 0.035,
+   "cer": 0.007,
+   "utmos": 3.478,
+   "spk_sim": 0.969,
+   "fails": 0
+  },
+  "Antton": {
+   "wer": 0.17,
+   "cer": 0.115,
+   "utmos": 3.643,
+   "spk_sim": 0.962,
+   "fails": 2
+  },
+  "bank0027": {
+   "wer": 0.049,
+   "cer": 0.009,
+   "utmos": 3.481,
+   "spk_sim": 0.957,
+   "fails": 0
+  },
+  "Aitor": {
+   "wer": 0.013,
+   "cer": 0.002,
+   "utmos": 3.513,
+   "spk_sim": 0.967,
+   "fails": 0
+  },
+  "bank0083": {
+   "wer": 0.052,
+   "cer": 0.014,
+   "utmos": 3.428,
+   "spk_sim": 0.953,
+   "fails": 0
+  }
+ },
+ "config": "configs/basque_6l_infer.yaml",
+ "checkpoint": "/root/runs/basque_6l/checkpoint_00100000.pt"
+}
