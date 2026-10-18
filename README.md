@@ -5,7 +5,7 @@ Open Basque (euskara) text-to-speech that runs in real time on a CPU, built on
 [BSSD](https://huggingface.co/datasets/itzune/bssd) dataset.
 
 **Demo page with audio samples and a comparison with Piper and OmniVoice:
-https://itzune.github.io/pocket-tts-basque/**
+https://itzune.eus/pocket-tts-basque/**
 
 | | Hugging Face | What it is |
 |---|---|---|

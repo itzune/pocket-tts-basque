@@ -172,3 +172,9 @@ Model license CC-BY-4.0 (as upstream); card documents BSSD provenance (teacher C
   staged in /root/export/basque_6l/voices and `release/` but not uploaded), README with the comparison and CPU
   benchmark. Verified by loading config + Maider state from the Hub. Teacher card now links the student.
   VM2 cleanup: student keep/ reduced to 125k + 150k; 13 GB free.
+- 2026-10-18 20:05 UTC: code published at https://github.com/itzune/pocket-tts-basque (MIT; fresh history, docs
+  scrubbed of IPs / hardware names / local LLM server mentions; `.env`, `logs/` and weights ignored). Demo page
+  (GitHub Pages from `docs/`, https://itzune.eus/pocket-tts-basque/): 5 voices x 4 sentences generated on 2 CPU
+  threads (3.4-3.7x real time), plus the same 3 sentences for Maider and Antton with Piper (itzune eu-*-medium
+  ONNX voices) and OmniVoice (clone from the same prompt clips). ASR check of every demo clip: all content
+  sentences WER 0 for our model and OmniVoice; Piper 0-0.25.
