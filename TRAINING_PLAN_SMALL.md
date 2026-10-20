@@ -128,3 +128,20 @@ appended to this file.
 - 2026-10-20: plan written after reading the blog post and the v4.0.0 commit (`#360`: z_dim, attention
   options, low-rank text table, one-step heads, decoder dims; `shrink_checkpoint.py`, `residual_cov.py`,
   `refl.py`). GPU VM unreachable from the laptop at the time (VPN); nothing started.
+- 2026-10-20 21:10 UTC: VM2 back. **Step 0 done**: `~/pocket-tts` → v4.0.0 in place (deps identical to
+  v3.3.0). `uv sync` pruned the manually added packages (pyarrow, wandb, faster-whisper, librosa,
+  transformers, nvidia cu12 libs) and left a hollow `nvidia-cudnn-cu13` (metadata without the .so):
+  reinstalled; 18/18 unit tests pass; the released 6-layer model generates under v4; the teacher
+  checkpoint opens.
+- 2026-10-20 21:25 UTC: **Step 1 result (Kyutai 2.6 M decoder on our 6-layer model)**: quality neutral
+  (40/voice, same seed) — named WER 0.042/0.043 vs 0.049/0.040 (Whisper/Conformer), held-out 0.033/0.034 vs
+  0.029/0.030, failure rates identical, UTMOS +0.02/+0.01, sim −0.001. But **no CPU speed gain in the
+  Python runtime**: laptop 1 thread 2.6× vs 3.2× real time (2 threads 3.8× vs 4.1×) — the 12-layer
+  128-wide decoder transformer run frame by frame is overhead-bound in PyTorch; Kyutai's 14.8× decoder
+  figure comes from their optimised runtime. Parked: revisit in the Rust/WASM engines. Config kept as
+  `configs/basque_6l_smalldec_infer.yaml`, hybrid weights `/root/export/hybrid_smalldec/`.
+- 2026-10-20 21:25 UTC: **Step 2 started**: residual covariance (49 norms, 190k tokens), seed checkpoint by
+  `scripts/small/narrow_teacher_z64.py` (top-64 PCs keep 84 % of head-input variance; z_proj + folded
+  cond_embed/out_eos; strict load OK), fine-tune `configs/basque_24l_z64.yaml` (lr 5e-5 const, batch 32×2,
+  30k steps) running at ~3.3 steps/s → ETA ~00:00 UTC; evals at 10k/20k/30k with CFG 2
+  (`configs/basque_24l_z64_infer.yaml`). Initial flow_loss 0.47 (teacher at 40k was ~0.10).
