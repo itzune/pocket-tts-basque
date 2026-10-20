@@ -448,3 +448,13 @@ Options, in order of preference:
 - Other candidates: https://github.com/OpenMOSS/MOSS-TTS-Nano, https://github.com/k2-fsa/ZipVoice,
   https://github.com/ErikUPV/ZipVoice-CA, https://github.com/semidark/kikiri-tts,
   https://github.com/0xShug0/audio.cpp, https://picovoice.ai/blog/on-device-tts/.
+
+## 7. In-browser inference (added 2026-10-20)
+
+Kyutai's web demo calls a backend (`pocket-tts-api.kyutai.org`); it is not WebAssembly. The in-browser
+engines are community projects, the mature one being gradium-ai's `xn-ptts` (npm `phonon-tts`, Rust →
+WASM, CPU SIMD/threads or WebGPU). The released Basque 6-layer model runs in it unchanged apart from
+dropping the 32-dim speaker projection (unused with precomputed voice states), a tokenizer conversion and
+the engine's Pocket TTS config: 3.8× real time on 3 browser threads with f32 weights, first audio in
+~180 ms, WER 0 on the test sentences. Details, limits (native loader, q8, no cloning) and tooling in
+`scripts/phonon/README.md`.

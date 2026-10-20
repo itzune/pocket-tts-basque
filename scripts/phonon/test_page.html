@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><title>phonon basque test</title>
+<pre id="log">starting</pre>
+<script type="module">
+import { PhononTTS } from './phonon-tts/index.js';
+const log = (m) => { document.getElementById('log').textContent += '\n' + m; console.log(m); };
+try {
+  const t0 = performance.now();
+  const tts = await PhononTTS.load({
+    lang: 'none', quant: 'f32', device: 'cpu',
+    model: { weights: { f32: './model/model.safetensors' }, tokenizer: './model/tokenizer.json', config: './model/config.json',
+             voices: { Maider: './model/voices/Maider.safetensors', Antton: './model/voices/Antton.safetensors' } },
+    onProgress: (p) => { if (p.loaded === p.total) log(`loaded ${p.file} ${p.total}`); },
+  });
+  log(`model loaded in ${((performance.now()-t0)/1000).toFixed(1)} s; device=${tts.device} threads=${tts.threads} (${tts.threadsReason}); voices=${tts.voices}`);
+  const text = 'Kaixo! Hau nabigatzailean bertan sortutako euskarazko ahots sintetiko bat da.';
+  const t1 = performance.now(); let n = 0, chunks = 0, first = null;
+  const speech = tts.stream(text, { voice: 'Maider' }); const parts = [];
+  for await (const chunk of speech) { if (first === null) first = performance.now() - t1; n += chunk.length; chunks++; parts.push(chunk); }
+  const pcm = new Float32Array(n); let o = 0; for (const c of parts) { pcm.set(c, o); o += c.length; }
+  const i16 = new Int16Array(n); for (let i = 0; i < n; i++) i16[i] = Math.max(-32768, Math.min(32767, Math.round(pcm[i] * 32767)));
+  const u8 = new Uint8Array(i16.buffer); let bin = ''; for (let i = 0; i < u8.length; i += 8192) bin += String.fromCharCode.apply(null, u8.subarray(i, i + 8192));
+  window.__pcm16 = btoa(bin); window.__sr = tts.sampleRate || 24000;
+  const stats = await speech.done; const dt = (performance.now() - t1) / 1000;
+  log(`RESULT samples=${n} seconds=${(n/24000).toFixed(2)} chunks=${chunks} first_audio_ms=${first.toFixed(0)} gen_s=${dt.toFixed(2)} x_realtime=${(n/24000/dt).toFixed(2)} stats=${JSON.stringify(stats)}`);
+  document.title = 'DONE';
+} catch (e) { log('ERROR ' + (e && e.stack || e)); document.title = 'ERROR'; }
+</script>

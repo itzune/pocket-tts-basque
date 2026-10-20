@@ -190,3 +190,9 @@ Model license CC-BY-4.0 (as upstream); card documents BSSD provenance (teacher C
   all five voices correctly. Not sherpa-onnx compatible as is (sherpa does not apply the voice BOS). The model
   card's snippet was run verbatim from an empty HF cache: the runtime loads `mimi_encoder.onnx` and
   `text_conditioner.onnx` in fp32 even for int8, so the card's download pattern includes them.
+- 2026-10-20: researched in-browser inference with phonon-tts (xn-ptts WASM). Works with the released
+  student (speaker_proj dropped, SentencePiece → tokenizers JSON, engine config): 1.8x real time on 1
+  thread, 3.8x on 3 threads (isolated page), first audio 180-270 ms, WER 0 (Whisper-eu) on two test texts
+  with Maider and Antton states. Native ptts loader rejects the checkpoint (Mimi encoder layout, KV-cache
+  voices browser-only). Tooling + notes in `scripts/phonon/`. Next: q8 GGUF (Rust `quantize` example) and
+  a live "type a sentence" box on the demo page.
