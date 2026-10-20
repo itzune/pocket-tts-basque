@@ -1,0 +1,130 @@
+# Plan 2: small Basque Pocket TTS models (18M and 7M)
+
+Status: planned 2026-10-20, not started. Follows Kyutai's recipe from
+["The tiny TTS was actually 10x too big"](https://kyutai.org/blog/2026-10-20-pocket-tts-small/)
+(code: pocket-tts v4.0.0). Phase 1 (teacher + 6-layer student) is in `TRAINING_PLAN.md`.
+
+## Goal
+
+| model | backbone | params (incl. decoder) | CPU speed, 1 thread (Kyutai, English) | browser f32 download |
+|---|---|---|---|---|
+| current `itzune/pocket-tts-basque` | 6 L × 1024 | ~100 M | 2.8× (ours: 3.5× on 2 threads) | 438 MB |
+| **target A: 18M** | 8 L × 512, z 64 | 18.2 M | 9.9× | ~70 MB |
+| target B: 7M | 8 L × 224, GQA 2 kv heads, rank-64 text table | 6.9 M | 12.6× | ~28 MB |
+
+Quality bar: match the current model on our own metrics (both ASRs, failure rate, UTMOS, speaker
+similarity on the 40-sentence/voice comparison set). Kyutai's English numbers say 18M and 7M hold the
+100M quality; we stop at the size where ours does not. The 1.9M model is out of scope (loses quality even
+in English).
+
+Starting assets: Basque teacher `basque_24l` step 40k (`/root/runs/basque_24l/keep/checkpoint_00040000.pt`,
+EMA), BSSD train/dev/test manifests + alignments + latents, the phase-1 evaluation harness.
+
+## Steps
+
+### 0. Upgrade and smoke-test the training code (½ day)
+
+- `~/pocket-tts` on the GPU VM from v3.3.0 to v4.0.0; re-run `training/tests` and a 200-step
+  `basque_6l_distill.yaml` resume to confirm old checkpoints still load ("every option defaults to the
+  current behaviour").
+- Re-check the host-memory leak and the loader shared-memory crash on v4; keep `mem_guard.sh`.
+- Read the final form of: `training/scripts/shrink_checkpoint.py` (`--config/--override/--cov`),
+  `residual_cov.py`, `training/args.py` (`z_dim`, `student_init_from`, `head_distill*`, `freeze_head`,
+  `refl`), `training/refl.py` (which CTC ASR it expects), `english_18m_2026-10.yaml` /
+  `english_7m_2026-10.yaml` (released architectures).
+
+### 1. Free win: Kyutai's distilled 2.6 M decoder (1 evening, no training)
+
+The Mimi decoder maps latents to audio and is language-independent; our backbone emits the same 32-dim
+latents. Build `configs/basque_6l_smalldec_infer.yaml` = our 6-layer config with the 18m config's
+`mimi.outer_dim: 128`, `quantizer.output_dimension: 128`, `decoder_seanet`/decoder transformer dims, and
+the decoder tensors taken from `kyutai/pocket-tts/languages/english_18m_2026-10/model.safetensors`
+(`mimi.*`; v4 supports separate Mimi weights). Evaluate with `scripts/compare_checkpoints.sh` logic on the
+same 40 sentences/voice: keep it only if UTMOS/WER/sim stay within noise of the current decoder. If it
+holds, the released model gets a 4× faster decoder immediately (and the browser build shrinks by ~30 MB).
+
+### 2. Narrow the teacher's interface to 64 dims (~3 h GPU)
+
+Blog: project the teacher's 1024-dim backbone output onto its top 64 principal components, fold the
+projection into the heads, fine-tune 30k steps; the teacher loses almost nothing (UTMOS 4.24 vs 4.27) and
+becomes distillable by small students. Ablation: 64 ≈ 128 > 32; a full-width teacher yields the worst
+student.
+
+- `residual_cov.py` on the teacher run (32 batches of dev) → `residual_cov.pt`.
+- `shrink_checkpoint.py` with `--config` = teacher config, `--override flow_lm.z_dim=64`, `--cov` →
+  `teacher_z64_init.pt` (exact flags to confirm in v4; the blog's "fold into the heads" is what
+  `shrink_width` + `z_dim` are for).
+- `configs/basque_24l_z64.yaml`: `finetune.yaml`-style continuation from that init, same data, 30k steps,
+  LR as the official fine-tune, `freeze_head: false`. Evaluate at 30k (with CFG 2, as a teacher is
+  scored): must match the 40k teacher's numbers.
+
+### 3. Distil the 18M student (~6-8 h GPU)
+
+`configs/basque_18m_distill.yaml` from `depth_distill.yaml` + the `english_18m_2026-10.yaml`
+architecture: `transformer: {num_layers: 8, d_model: 512, hidden_scale: 1, num_heads: 8}`,
+`lookup_table: {dim: 512, n_bins: 4000, tokenizer: sentencepiece}`, `flow_lm.z_dim: 64`; teacher =
+step-2 checkpoint (`distill_teacher_*`, `distill_cfg_coef: 2.0`), `student_init_from` = the teacher cut
+by `shrink_checkpoint` (bottom+top layers, PCA width cut), batch 64, lr 4e-4 cosine, 100k steps (Kyutai's
+stage length; our 6-layer run converged by ~125k at the same batch). Head and decoder stay the teacher's
+at this point (the blog distils backbone first, heads frozen and shared).
+
+Gate: our comparison set, failure rate ≤ current model's 1.3 %, WER-ok ≤ 0.045, UTMOS ≥ 3.45, sim ≥ 0.955.
+
+### 4. Small sampling head (~2-4 h GPU)
+
+`head_distill: true`, `head_distill_from` = step-3 checkpoint, new head `flow: {type: drifting, depth: 4,
+dim: 192}`, `head_distill_loss: drifting`, `head_distill_samples: 64`, backbone frozen (the run trains only
+the new head). This replaces the 9.8 M LSD head with 0.84 M at no quality cost in their ablation. If
+drifting is unstable, fall back to `head_distill_loss: mse` (−0.05 UTMOS in their table).
+
+### 5. Decoder (reuse step 1, or distil our own)
+
+If Kyutai's 2.6 M decoder passed step 1, ship it. Otherwise distilling our own needs the decoder training
+loop (adversarial + feature-matching + spectral + L1 on 100k of our model's own outputs); check whether v4
+includes it before planning it.
+
+### 6. Optional: reward fine-tuning (~1 h GPU)
+
+`refl` with UTMOS + CTC log-likelihood, 3k steps, head and decoder frozen, distillation loss as anchor.
+Needs a Basque character-level CTC model for the intelligibility term: `deepdml/wav2vec2-large-xls-r-300m-basque`
+(our aligner) if `refl.py` accepts a custom CTC model; otherwise skip. Watch for pitch-range narrowing
+(Kyutai saw −0.4 semitones on an internal model); compare F0 range on the comparison set before/after.
+
+### 7. Optional: 7M (3 more cut-and-retrain stages, ~1 day GPU)
+
+From the 18M backbone: width 320 → 224 → (2 kv heads, rank-64 text table, FFN 224), each stage distilled
+to convergence (Kyutai: ~100k steps each; shorter stages lost 0.4 UTMOS when skipping steps). Then redo
+step 4 for the smaller head. Only if 18M passed its gate with margin.
+
+### 8. Evaluation and release
+
+Same protocol as phase 1 (`scripts/eval_basque.py`, `score_conformer.py`, `compare_checkpoints.sh`,
+`bench_cpu.py` at 1/2 threads fp32 and int8, phonon-tts browser test), plus a listening pass on the five
+published voices. Release as `itzune/pocket-tts-basque-18m` (and `-7m`), export voice states per model
+(`scripts/export_voices.py`), update the demo page with speed/size per model and the in-browser box.
+
+## Compute and risk
+
+- GPU: ~2 days for 18M (steps 0-4, 6), +1 day for 7M; VRAM is not a constraint (students are tiny); the
+  teacher forward dominates distillation as in phase 1 (~4 steps/s then).
+- Known hazards from phase 1: host-memory leak (guard restarts at 11 GB), loader shared-memory crash
+  after checkpoints under memory pressure, evaluation OOM when run alongside training; swap 19 GB, disk
+  ~13 GB free (clean before starting; the 60k teacher checkpoint is already gone).
+- Quality risks specific to us: prompt-continuation failures (teacher 3.5-5 %, student 0.5-1.3 %) may
+  rise in a smaller student; the failure rate is the gating metric. Voice similarity on real speakers
+  (Maider, Antton) is the second thing to watch.
+- Kyutai's numbers are English, 11 M utterances, 3 seeds; ours is 350 k utterances of synthetic speech and
+  1 seed per stage. Expect noisier gates; use the 40-sentence/voice set, not the 16-sentence loop evals.
+
+## Deliverables
+
+`configs/basque_24l_z64.yaml`, `configs/basque_18m_distill.yaml`, `configs/basque_18m_head.yaml`,
+(`configs/basque_7m_*`), `scripts/run_stage.sh` (one launcher per stage reusing resume/eval/sidecar/guard),
+evaluation reports under `reports/small/`, release sources under `release/basque_18m/`, and the run log
+appended to this file.
+
+## Log
+
+- 2026-10-20: plan written after reading the blog post and the v4.0.0 commit (`#360`: z_dim, attention
+  options, low-rank text table, one-step heads, decoder dims; `shrink_checkpoint.py`, `residual_cov.py`,
+  `refl.py`). GPU VM unreachable from the laptop at the time (VPN); nothing started.
