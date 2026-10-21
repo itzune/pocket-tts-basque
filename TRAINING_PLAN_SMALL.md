@@ -145,3 +145,5 @@ appended to this file.
   cond_embed/out_eos; strict load OK), fine-tune `configs/basque_24l_z64.yaml` (lr 5e-5 const, batch 32×2,
   30k steps) running at ~3.3 steps/s → ETA ~00:00 UTC; evals at 10k/20k/30k with CFG 2
   (`configs/basque_24l_z64_infer.yaml`). Initial flow_loss 0.47 (teacher at 40k was ~0.10).
+- 2026-10-21: **HOLD** (user): do not start the 18M distillation (step 3) yet. The z64 teacher fine-tune
+  (step 2) runs to its 30k steps and is evaluated; nothing further is launched without a go-ahead.
