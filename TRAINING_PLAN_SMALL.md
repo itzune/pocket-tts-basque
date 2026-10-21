@@ -162,3 +162,9 @@ appended to this file.
   512, all tensors seeded), `configs/basque_18m_distill.yaml` (8 L × 512, FFN 512, z64, teacher LSD head
   frozen, lr 4e-4 cosine, batch 64, 100k steps). 5.1 steps/s, 5.7 GB VRAM → ETA ~21:45 UTC. Evals every
   25k with `configs/basque_18m_infer.yaml`. Initial distill_mse 0.51 → 0.44 at step 600.
+- 2026-10-21 19:30 UTC: 18M @25k eval (EMA, 16/voice): WER 0.53 named and held-out, UTMOS 3.19/3.28,
+  sim 0.947 — mumbled, words merged/dropped (6-layer student was at 0.09 at 25k). Diagnosis on 47.5k,
+  12 sentences × 2 voices: EMA weights WER 0.379 (7/24 fails), raw weights 0.196 (4/24). Both factors:
+  the width cut 1024→512 makes the 18M student slower to converge, and EMA 0.9999 still carries the cut
+  init this early. No change for now: cosine decay to 100k should close the EMA gap; judge on the 75k and
+  100k evals (and evaluate raw weights too if EMA still lags). mem_guard restarted the trainer once (42.5k).
