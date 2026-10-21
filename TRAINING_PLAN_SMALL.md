@@ -171,3 +171,6 @@ appended to this file.
 - 2026-10-21 19:33 UTC: 18M @50k eval (EMA): named WER 0.235 / UTMOS 3.27 / sim 0.943, held-out 0.274 /
   3.22 / 0.940; median WER 0.5 → 0.1, failures 92 → 47 of 208. Improving fast, still far from the
   6-layer student (0.05 / 3.48). Next evals 75k (~20:55 UTC) and 100k (~22:20 UTC).
+- 2026-10-21 21:01 UTC: 18M @75k eval (EMA): named WER 0.127 (non-failed 0.061) / UTMOS 3.50 / sim 0.951,
+  held-out 0.135 (0.065) / 3.55 / 0.942; median WER 0.0, failures 21/208 (47 at 50k, 92 at 25k). UTMOS
+  now at the 6-layer student's level (3.48/3.50); failures and speaker similarity still behind.
