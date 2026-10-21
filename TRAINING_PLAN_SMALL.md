@@ -168,3 +168,6 @@ appended to this file.
   the width cut 1024→512 makes the 18M student slower to converge, and EMA 0.9999 still carries the cut
   init this early. No change for now: cosine decay to 100k should close the EMA gap; judge on the 75k and
   100k evals (and evaluate raw weights too if EMA still lags). mem_guard restarted the trainer once (42.5k).
+- 2026-10-21 19:33 UTC: 18M @50k eval (EMA): named WER 0.235 / UTMOS 3.27 / sim 0.943, held-out 0.274 /
+  3.22 / 0.940; median WER 0.5 → 0.1, failures 92 → 47 of 208. Improving fast, still far from the
+  6-layer student (0.05 / 3.48). Next evals 75k (~20:55 UTC) and 100k (~22:20 UTC).
