@@ -174,3 +174,11 @@ appended to this file.
 - 2026-10-21 21:01 UTC: 18M @75k eval (EMA): named WER 0.127 (non-failed 0.061) / UTMOS 3.50 / sim 0.951,
   held-out 0.135 (0.065) / 3.55 / 0.942; median WER 0.0, failures 21/208 (47 at 50k, 92 at 25k). UTMOS
   now at the 6-layer student's level (3.48/3.50); failures and speaker similarity still behind.
+- 2026-10-21 21:30 UTC: checked Kyutai's repo for 18M training details: no args/config published (only
+  the blog: 100k-step stages, batch 64; #382 lists sizes only). Fixes since v4.0.0 checked against our data:
+  #396 (no weight decay on the text table: unseen rows collapse) — our 216 unseen tokens are only the
+  4 control pieces and 212 byte-fallback pieces, every real word piece is seen, and the 18M unseen rows
+  are at 88 % of the seen-row norm, so no impact on normalised Basque text; #394/#397 (unaligned or
+  punctuation-only last word cuts the target) — 15 of 200k utterances, negligible. #398 retrained their
+  small models on audiobook + conversational data (no change to the recipe itself). Nothing to change in
+  our run; pull v4.0.1 before the next stage.
