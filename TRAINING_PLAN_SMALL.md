@@ -147,3 +147,18 @@ appended to this file.
   (`configs/basque_24l_z64_infer.yaml`). Initial flow_loss 0.47 (teacher at 40k was ~0.10).
 - 2026-10-21: **HOLD** (user): do not start the 18M distillation (step 3) yet. The z64 teacher fine-tune
   (step 2) runs to its 30k steps and is evaluated; nothing further is launched without a go-ahead.
+- 2026-10-21 (overnight): the z64 fine-tune **crashed at step 12,500 (22:43 UTC) on a full disk** while
+  writing optimizer state (24 L run: 2.4 GB checkpoint + 2.4 GB optimizer per save, 3 rotating + kept
+  copies, plus the v4 package reinstall and the 8 GB second swap file). Freed 14 GB: partial optimizer
+  file, superseded rotating checkpoints, the finished run's optimizer state, uv cache, the teacher export
+  already on the Hub, the parked decoder experiment, and `/swapfile2` (swap back to 12 GB). Run marked
+  `.finished`. Lesson: budget ~5 GB per 24 L checkpoint save and check free space before 24 L runs.
+- 2026-10-21: z64 teacher eval @10k (16/voice, CFG 2) already matches the original teacher: named WER
+  0.061 / UTMOS 3.65 / sim 0.960, held-out 0.028 / 3.67 / 0.961 (original 40k: 0.093 / 3.63 / 0.959 and
+  0.048 / 3.67 / 0.961; z64 step 0 before fine-tuning: 0.232 / 3.60 and 0.171 / 3.53). **Teacher for step 3
+  = z64 step 10k (EMA)**; not resumed to 30k (phase 1 showed drift with more constant-LR steps).
+- 2026-10-21 16:16 UTC: user go-ahead → **step 3 started**: residual covariance on the z64 teacher,
+  student seed by `shrink_checkpoint --config ... --cov` (teacher layers 0-3 + 20-23, PCA width cut to
+  512, all tensors seeded), `configs/basque_18m_distill.yaml` (8 L × 512, FFN 512, z64, teacher LSD head
+  frozen, lr 4e-4 cosine, batch 64, 100k steps). 5.1 steps/s, 5.7 GB VRAM → ETA ~21:45 UTC. Evals every
+  25k with `configs/basque_18m_infer.yaml`. Initial distill_mse 0.51 → 0.44 at step 600.

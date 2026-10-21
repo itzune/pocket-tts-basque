@@ -20,8 +20,9 @@ resume_run(){  # name train_cfg infer_cfg eval_every
 resume_run basque_24l basque_24l_finetune.yaml basque_24l_infer.yaml 10000
 resume_run basque_6l basque_6l_distill.yaml basque_6l_infer.yaml 25000
 resume_run basque_24l_z64 basque_24l_z64.yaml basque_24l_z64_infer.yaml 10000
+resume_run basque_18m basque_18m_distill.yaml basque_18m_infer.yaml 25000
 # memory guard for the leaking trainer process (restarts it from the last checkpoint when needed)
-for spec in "basque_6l basque_6l_distill.yaml" "basque_24l_z64 basque_24l_z64.yaml"; do set -- $spec
+for spec in "basque_6l basque_6l_distill.yaml" "basque_24l_z64 basque_24l_z64.yaml" "basque_18m basque_18m_distill.yaml"; do set -- $spec
   [ -f /root/runs/$1/.started ] && [ ! -f /root/runs/$1/.finished ] && ! pgrep -f "mem_guard\.sh" >/dev/null \
     && { log "relaunching mem_guard ($1)"; (RUN=/root/runs/$1 CFG_NAME=$2 setsid -f nohup bash scripts/mem_guard.sh >> logs/mem_guard_$1.log 2>&1 < /dev/null); }
 done

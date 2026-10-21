@@ -1,0 +1,59 @@
+# Step 3 of TRAINING_PLAN_SMALL.md: distil the narrowed Basque teacher (24 L × 1024, z_dim 64, step 10k)
+# into the 18M architecture of Kyutai's english_18m_2026-10 (8 L × 512, FFN 512, z_dim 64).
+# The sampler head (LSD, depth 6 × 512) and EOS head are the teacher's, frozen and shared; they are
+# replaced by a small drifting head in step 4. The backbone is seeded from the teacher's bottom+top
+# layers cut along the residual stream's principal components (student_init_from, built by
+# training.scripts.shrink_checkpoint --config ... --cov).
+model_config: pocket_tts/config/english_2026-04_24l.yaml
+model_overrides:
+  flow_lm.lookup_table.tokenizer: sentencepiece
+  flow_lm.lookup_table.tokenizer_path: /root/data/bssd/tokenizer/basque.model
+  flow_lm.lookup_table.dim: 512
+  flow_lm.transformer.num_layers: 8
+  flow_lm.transformer.d_model: 512
+  flow_lm.transformer.hidden_scale: 1
+  flow_lm.transformer.num_heads: 8
+  flow_lm.z_dim: 64
+start_from_pretrained: false
+distill_cfg_coef: 2.0
+distill_teacher_config: pocket_tts/config/english_2026-04_24l.yaml
+distill_teacher_overrides:
+  flow_lm.lookup_table.tokenizer: sentencepiece
+  flow_lm.lookup_table.tokenizer_path: /root/data/bssd/tokenizer/basque.model
+  flow_lm.z_dim: 64
+distill_teacher_weights: /root/runs/basque_24l_z64/keep/checkpoint_00010000.pt
+student_init_from: /root/runs/basque_18m_init/student_init.pt
+
+data:
+  train_jsonl: /root/data/bssd/train_aligned.jsonl
+  valid_jsonl: /root/data/bssd/dev_aligned.jsonl
+
+flow:
+  type: lsd
+  kwargs: {}
+
+text_dropout: 0.0
+voice_dropout: 0.0
+
+optim:
+  lr: 4e-4
+  schedule: cosine
+  warmup_steps: 1000
+
+run_dir: /root/runs/basque_18m
+batch_size: 64
+grad_accum_steps: 1
+max_steps: 100000   # Kyutai's stage length; our 6-layer distillation converged by ~125k
+ema_decay: 0.9999
+log_freq: 50
+valid_freq: 2500
+ckpt_freq: 2500
+num_ckpt_keep: 3
+sample_sentences:
+  - "Kaixo, nola zaude gaur?"
+  - "Euskara munduko hizkuntzarik zaharrenetarikoa da, eta Euskal Herrian hitz egiten da."
+  - "Bihar goizeko hamarretan hasiko da bilera, Donostiako udaletxean."
+  - "Zenbat balio du txartel horrek? Hogeita bost euro."
+sample_freq: 5000
+sample_temp: 0.3
+sample_cfg_coef: 1.0
