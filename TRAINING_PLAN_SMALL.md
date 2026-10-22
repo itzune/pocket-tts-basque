@@ -198,3 +198,13 @@ appended to this file.
   continuations, 8 other. The EOS head is the teacher's, frozen; it reads the student's z, which is
   slightly off. Testing a higher inference eos_threshold (default −4) on the failed set + 40 control
   sentences. Reports in `reports/small/`.
+- 2026-10-22: **eos_threshold fix**. Sweep on the 38 failed + 40 control sentences (seed 0): −4 → 20/38
+  fails (control 1/40), −2 → 3/38, 0 → 0/38 (WER 0.047; control WER 0.046, 0 fails), +2 identical to 0; no
+  runaway (max 10.7 s). Full 40/voice comparison with `default_eos_threshold: 0.0`: named WER 0.054 /
+  0.036 (Whisper/Conformer), failures 0.0 %, UTMOS 3.46, sim 0.958; held-out 0.039 / 0.033, 0.5 %, 3.48,
+  0.949 — within ~0.01 WER of the 6-layer model (0.049/0.040, 1.3 %; 0.029/0.030, 0.5 %), sim −0.002/−0.008.
+- 2026-10-22: release staged locally in `release/basque_small/` (weights git-ignored): model.safetensors
+  (176 MB: backbone+text 14.7 M, teacher head 9.3 M, Mimi 20.1 M), tokenizer, `basque_small.yaml`
+  (hf://itzune/pocket-tts-basque-small, eos 0), 5 voice states (Maider, Antton, Nahia, Ane, Aitor) + voices.json,
+  README. Loaded with pocket-tts 4.0.1 from the local files; laptop CPU 8.1×/13.0× real time (1/2 threads)
+  vs 5.0×/6.7× for the 6-layer model; three clips transcribed correctly. **Not uploaded** (user).

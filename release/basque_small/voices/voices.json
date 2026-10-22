@@ -1,0 +1,27 @@
+{
+ "Maider": {
+  "gender": "female",
+  "origin": "HiTZ-Aholab studio corpus speaker (real voice, CC BY 4.0)",
+  "prompt_duration_s": 6.55
+ },
+ "Antton": {
+  "gender": "male",
+  "origin": "HiTZ-Aholab studio corpus speaker (real voice, CC BY 4.0)",
+  "prompt_duration_s": 4.03
+ },
+ "Nahia": {
+  "gender": "female",
+  "origin": "synthetic voice (BSSD voice bank)",
+  "prompt_duration_s": 6.81
+ },
+ "Ane": {
+  "gender": "female",
+  "origin": "synthetic voice (BSSD voice bank)",
+  "prompt_duration_s": 5.15
+ },
+ "Aitor": {
+  "gender": "male",
+  "origin": "synthetic voice (BSSD voice bank)",
+  "prompt_duration_s": 6.18
+ }
+}

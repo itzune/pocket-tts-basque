@@ -2,6 +2,7 @@
 # Local paths on the training VM.
 weights_path: /root/runs/basque_18m/model.safetensors
 default_temperature: 0.3
+default_eos_threshold: 0.0   # the frozen teacher EOS head fires early on the 18M student at -4 (TRAINING_PLAN_SMALL.md)
 flow_lm:
   insert_bos_before_voice: true
   dtype: float32
