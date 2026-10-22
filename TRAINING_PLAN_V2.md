@@ -155,3 +155,8 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   score loops and Conformer loops running; reboot cron on `~/bssd/scripts/resume_all.sh` (finalize/upload
   disabled). Expected ≈ 450k utterances ≈ 580 h; ~3 h per run → VM1 ~15 h, VM2 ~12 h, with the 08:00
   shutdowns in between (resumable). Baseline paired evals continue on VM1 (chain adds Conformer + report).
+- 2026-10-22 ~17:00 UTC: real speech ingested on VM1 (`/root/data/real_v2`, 24 kHz FLAC + rows.jsonl):
+  HiTZ-Aholab Maider 17.6 h + Antton 16.7 h (26,909 rows; the two archives share file names and had to be
+  extracted into separate folders — first pass had pointed every Maider row at Antton's audio) and
+  OpenSLR 76 12.6 h (6,548 rows) with the 10 dev/test held-out speakers excluded; 46.9 h total, 1,493 rows
+  with palatals, 10 normaliser rejects, 91 clips < 0.8 s dropped.
