@@ -208,3 +208,13 @@ appended to this file.
   (hf://itzune/pocket-tts-basque-small, eos 0), 5 voice states (Maider, Antton, Nahia, Ane, Aitor) + voices.json,
   README. Loaded with pocket-tts 4.0.1 from the local files; laptop CPU 8.1×/13.0× real time (1/2 threads)
   vs 5.0×/6.7× for the 6-layer model; three clips transcribed correctly. **Not uploaded** (user).
+- 2026-10-22: **eos threshold validated out of sample** (`scripts/small/validate_eos.py`, 13 voices × 12
+  sentences): dev split, seed 1: eos −4 WER 0.043 / 3 fails, eos 0 WER 0.024 / 0 fails, eos +2 identical to 0;
+  test sentences with a new seed at eos 0: WER 0.036 / 1 fail of 156; six 4-sentence texts (up to 31 s) at
+  eos 0 and +2: WER 0.079 (median 0.04), 0 fails, no runaway (duration/expected 1.17, same as short
+  sentences). So the early stops are sentence-dependent (the test comparison set hits them harder than
+  dev) and eos 0 removes them without side effects. Kept `default_eos_threshold: 0.0` in the release config.
+- 2026-10-22: per-voice sim (40/voice): the held-out gap comes from one voice (eum_08886 −0.025); the other
+  12 voices are within ±0.010; the small model has fewer failures on Unai/Jon/Mikel. Listening set built:
+  `samples/compare_small/index.html` (5 voices × 4 sentences, base vs small, same voice states; small
+  6.5× vs base 3.5× real time on the VM's 2 CPU threads). Release stays staged, not uploaded.

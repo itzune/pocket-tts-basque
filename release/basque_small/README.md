@@ -91,7 +91,9 @@ WavLM speaker similarity to the reference clip. "Failures" are sentences with WE
 | | 5 unseen voices | 0.029 | 0.030 | 0.5 % | 3.50 | 0.957 |
 
 With the end-of-speech threshold at Pocket TTS's default (−4) the same model scores WER 0.11 and a
-7-8 % failure rate, all from sentences cut short; use the provided config.
+7-8 % failure rate on this set, all from sentences cut short; use the provided config. The threshold was
+checked on held-out dev sentences, a second sampling seed and 30-second multi-sentence texts: no runaway
+generation, lower WER throughout.
 
 ## Training
 

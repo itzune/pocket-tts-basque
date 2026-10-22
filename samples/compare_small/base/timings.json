@@ -1,0 +1,105 @@
+{
+ "threads": 2,
+ "clips": {
+  "Maider_intro": {
+   "audio_s": 5.92,
+   "gen_s": 1.67,
+   "x_realtime": 3.55
+  },
+  "Maider_news": {
+   "audio_s": 7.52,
+   "gen_s": 2.08,
+   "x_realtime": 3.61
+  },
+  "Maider_story": {
+   "audio_s": 7.04,
+   "gen_s": 2.01,
+   "x_realtime": 3.51
+  },
+  "Maider_question": {
+   "audio_s": 5.52,
+   "gen_s": 1.55,
+   "x_realtime": 3.56
+  },
+  "Antton_intro": {
+   "audio_s": 5.44,
+   "gen_s": 1.5,
+   "x_realtime": 3.64
+  },
+  "Antton_news": {
+   "audio_s": 6.4,
+   "gen_s": 1.81,
+   "x_realtime": 3.53
+  },
+  "Antton_story": {
+   "audio_s": 6.4,
+   "gen_s": 1.86,
+   "x_realtime": 3.44
+  },
+  "Antton_question": {
+   "audio_s": 4.8,
+   "gen_s": 1.4,
+   "x_realtime": 3.42
+  },
+  "Nahia_intro": {
+   "audio_s": 4.88,
+   "gen_s": 1.43,
+   "x_realtime": 3.4
+  },
+  "Nahia_news": {
+   "audio_s": 5.84,
+   "gen_s": 1.68,
+   "x_realtime": 3.47
+  },
+  "Nahia_story": {
+   "audio_s": 5.84,
+   "gen_s": 1.66,
+   "x_realtime": 3.52
+  },
+  "Nahia_question": {
+   "audio_s": 4.64,
+   "gen_s": 1.36,
+   "x_realtime": 3.41
+  },
+  "Ane_intro": {
+   "audio_s": 4.8,
+   "gen_s": 1.37,
+   "x_realtime": 3.51
+  },
+  "Ane_news": {
+   "audio_s": 5.84,
+   "gen_s": 1.66,
+   "x_realtime": 3.52
+  },
+  "Ane_story": {
+   "audio_s": 5.84,
+   "gen_s": 1.64,
+   "x_realtime": 3.57
+  },
+  "Ane_question": {
+   "audio_s": 4.64,
+   "gen_s": 1.29,
+   "x_realtime": 3.59
+  },
+  "Aitor_intro": {
+   "audio_s": 4.64,
+   "gen_s": 1.33,
+   "x_realtime": 3.49
+  },
+  "Aitor_news": {
+   "audio_s": 5.44,
+   "gen_s": 1.52,
+   "x_realtime": 3.58
+  },
+  "Aitor_story": {
+   "audio_s": 5.52,
+   "gen_s": 1.58,
+   "x_realtime": 3.49
+  },
+  "Aitor_question": {
+   "audio_s": 4.4,
+   "gen_s": 1.23,
+   "x_realtime": 3.58
+  }
+ }
+}
