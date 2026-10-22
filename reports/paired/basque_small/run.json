@@ -1,0 +1,6 @@
+{
+ "config": "/root/export/basque_small/infer_local.yaml",
+ "checkpoint": null,
+ "seeds": 1,
+ "eos_threshold": null
+}
