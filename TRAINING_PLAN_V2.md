@@ -183,3 +183,7 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   it is retrained with `user_defined_symbols=["tt","dd","ll"]` (`scripts/small/train_tokenizer_v2.py`) so
   every palatal is one dedicated piece the model can tie to the real-speech examples. dev/test manifests and
   the eval sets stay as they are (they only use text).
+- 2026-10-22 18:00 UTC: tokenizer v2 verified on VM2: "An|tt|on", "Ma|dd|i", "Pe|ll|o" — palatal digraphs are
+  single pieces (`/root/data/bssd_v2/tokenizer/basque_v2.model`, 4000 pieces). Day-1 state: generation
+  v12/v17 at shard ~7/10 on both VMs; nothing else running. Tomorrow: wait for generation + scoring →
+  package v2 synthetic (per VM) → pull to VM2 → `build_v2_manifest.py` → align + latents → teacher v2.
