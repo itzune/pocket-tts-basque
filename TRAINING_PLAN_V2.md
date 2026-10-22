@@ -160,3 +160,12 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   extracted into separate folders — first pass had pointed every Maider row at Antton's audio) and
   OpenSLR 76 12.6 h (6,548 rows) with the 10 dev/test held-out speakers excluded; 46.9 h total, 1,493 rows
   with palatals, 10 normaliser rejects, 91 clips < 0.8 s dropped.
+- 2026-10-22 ~17:30 UTC: **Stage 0 baseline on the new paired protocol** (1,138 seed-matched utterances,
+  `reports/paired/report_6l_vs_small.md`): small vs 6 L — WER/CER ties within CI on both ASRs (Conformer
+  CER even slightly better: −0.002, CI excludes 0), UTMOS −0.025 and speaker sim −0.004 (both significant),
+  failures 3 vs 6. So the ASR metrics do not see the slips the ear catches; UTMOS does, faintly. What the
+  per-sentence view shows: the small model garbles the **first word** of the time-table sentences
+  ("Autobusa" → "Aupuru/Aukudu") — an utterance-onset problem, not a general one; and the 6 L model has a
+  question-sentence weakness (hard-set "question" CER 0.048 vs 0.004 for small). Both are new, specific,
+  measurable targets for v2. Protocol note: the ASR-based gate must be complemented by the blind listening
+  protocol; CER on the hard-set tags (palatal, numbers, names, question) is the most sensitive automatic signal.
