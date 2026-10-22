@@ -143,3 +143,7 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   Conclusion: OmniVoice has no /c/, so generation-side respelling cannot fix "tt"; the fix is real speech
   (HiTZ-Aholab explicitly covers "tt") in the training mix, with sentences containing palatals
   over-sampled, plus the palatal tag in the hard set as the gate. Clips: `samples/pron_probe/index.html`.
+- 2026-10-22 16:00 UTC: bank round 3 done (30 new voices, 164 total; merge-path bug fixed). Pool v3 rebuilt
+  after a wrong corpus path cost an hour. Queue env + reboot cron prepared on both VMs (finalize/upload
+  disabled). Baseline paired evals slower than planned on the shared VM1 (CPU-bound): 6 L ~⅓ done.
+  HiTZ download at 5.6/16 GB; ingestion (`bssd/scripts/ingest_real.py`) auto-starts when it lands.
