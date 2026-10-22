@@ -147,3 +147,11 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   after a wrong corpus path cost an hour. Queue env + reboot cron prepared on both VMs (finalize/upload
   disabled). Baseline paired evals slower than planned on the shared VM1 (CPU-bound): 6 L ~⅓ done.
   HiTZ download at 5.6/16 GB; ingestion (`bssd/scripts/ingest_real.py`) auto-starts when it lands.
+- 2026-10-22 (VM clock 14:39 UTC): **BSSD v2 generation launched** on both VMs: pool v3 = 1,092,969 new
+  sentences (euscrawl 650k, euwiki 295k, cv 44k, numbers 104k); bank3 = 164 voices; palatal sentences
+  (tt/dd/ll between vowels, ~1 % of text) are skipped at job creation after the user confirmed by ear that
+  OmniVoice's palatals are unusable even with respellings — real speech will be their only source.
+  VM1 runs v12-v16 (offsets 0-200k), VM2 v17-v20 (250k-400k), ~49.5k jobs per run, 10 shards each;
+  score loops and Conformer loops running; reboot cron on `~/bssd/scripts/resume_all.sh` (finalize/upload
+  disabled). Expected ≈ 450k utterances ≈ 580 h; ~3 h per run → VM1 ~15 h, VM2 ~12 h, with the 08:00
+  shutdowns in between (resumable). Baseline paired evals continue on VM1 (chain adds Conformer + report).
