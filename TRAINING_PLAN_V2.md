@@ -177,3 +177,9 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   no other real rows, no SLR76 audio (`build_v2_manifest.py` defaults). The palatal tag of the hard set
   tells whether that is enough; if not, raise the repeat before adding non-palatal real rows. The real
   corpora stay packaged for the BSSD v2 release as a separate `real` config.
+- 2026-10-22 17:00 UTC: tokenizer v2 (`/root/data/bssd_v2/tokenizer/basque_v2.model`, 4000 pieces, same
+  spec as the official script) trained on 1.46 M lines (v1 + pool v3 texts without palatals, real
+  transcripts with them). A first attempt split the palatal digraphs across pieces ("An"+"t"+"ton"), so
+  it is retrained with `user_defined_symbols=["tt","dd","ll"]` (`scripts/small/train_tokenizer_v2.py`) so
+  every palatal is one dedicated piece the model can tie to the real-speech examples. dev/test manifests and
+  the eval sets stay as they are (they only use text).
