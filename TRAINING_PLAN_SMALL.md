@@ -218,3 +218,6 @@ appended to this file.
   12 voices are within ±0.010; the small model has fewer failures on Unai/Jon/Mikel. Listening set built:
   `samples/compare_small/index.html` (5 voices × 4 sentences, base vs small, same voice states; small
   6.5× vs base 3.5× real time on the VM's 2 CPU threads). Release stays staged, not uploaded.
+- 2026-10-22: user listened to the base-vs-small set: audibly more slips ("bihar" → "bidar", dropped
+  words) in the small model despite WER parity. Decision: do it properly, restarting from the data; see
+  `TRAINING_PLAN_V2.md`. The staged small release is not uploaded.

@@ -1,0 +1,120 @@
+# Plan 3: doing the small Basque model properly (restart from the data up)
+
+Written 2026-10-22 after the first 8 L × 512 student ("small", `TRAINING_PLAN_SMALL.md`) reached WER parity
+on paper but audibly more pronunciation slips and dropped words than the 6-layer model. Decision (user):
+do it well, restarting where needed, not the cheapest fix.
+
+## Diagnosis of the first attempt
+
+| Kyutai's recipe | what we did | gap |
+|---|---|---|
+| ~300 M teacher trained from scratch, 2,000 h / 11 M utterances of real speech | 24 L English model fine-tuned 40 k steps at constant LR on 448 h / 350 k synthetic utterances; later checkpoints drifted | **teacher is the ceiling** of any student; ours has 3-5 % failures and was chosen by early stop |
+| narrow the teacher to z 64, fine-tune 30 k steps | 10 k steps (disk crash), never fully re-evaluated | targets noisier than needed |
+| each stage distilled "to convergence" | fixed 100 k steps; validation loss trend not checked at the end | may have stopped early |
+| student sees 11 M distinct utterances | student sees 350 k utterances ~18 times | **generalisation on unseen text** (the "bihar → bidar" class of errors) |
+| evaluation: 1,127 sentences × 3 seeds | 520 sentences × 1 seed, WER only | our metric missed what the ear hears |
+| EOS head stays calibrated | EOS head fired early; patched with an inference threshold | symptom of z-space mismatch |
+
+The student architecture, seeding and guided targets matched the recipe. The inputs did not.
+
+## Principles
+
+1. Measurement before training: a paired, seed-matched protocol with character-level metrics and a
+   listening protocol; every stage has a gate on it, decided before the run.
+2. Strengthen the teacher before shrinking anything: more and more diverse data, a proper schedule,
+   full evaluation of the narrowed teacher.
+3. Run every stage to convergence by validation loss, not to a step count.
+4. Fix root causes (EOS calibration, teacher drift) rather than thresholds.
+5. Use both VMs: VM2 for backbone runs, VM1 for data generation, scoring and evaluation, so evaluation
+   never shares a box with training again.
+
+## Stage 0 — Evaluation protocol (VM1, 1 day, no training)
+
+- `scripts/paired_eval.py`: N ≥ 400 sentences from the test split (fixed list), 13 voices, same seed per
+  (voice, sentence) for every model; metrics per sentence: WER and **CER** with both Basque ASRs,
+  UTMOS, speaker sim, duration ratio, failure class (early stop / prompt continuation / other);
+  **paired** differences model A − B with bootstrap 95 % CIs and per-sentence win/tie/loss; 3 seeds for
+  release decisions.
+- A hard subset (rare word pieces, proper names, numbers in words, long sentences, questions) to track
+  the slips the ear catches; built once from the dev split, frozen.
+- Listening protocol: the 5 voices × 20 sentences page, A/B blind order, you score "A better / same / B
+  better"; a release needs ≥ 85 % "same or better" against the current model.
+- Re-score the released 6 L model and the first small model with it, so the baseline is on the new scale.
+
+## Stage 1 — Data: BSSD v2 (VM1 + VM2 in parallel, ~4-5 days wall)
+
+Target ≥ 1,000 h train (from 448 h), with the diversity the student lacked:
+- Text: broaden sources and reduce repetition — more EusCrawl/news/wiki sentences with a per-source cap,
+  more generated numbers/dates/acronyms, questions and exclamations, long sentences (15-30 words), and
+  a coverage pass so every SentencePiece piece appears ≥ 100 times.
+- Voices: same policy (no Common Voice cloning, no politicians); more bank voices (more design briefs) so
+  unseen-voice similarity improves; keep the 8 named voices' shares.
+- Generation: OmniVoice at 15-35 audio-hours per GPU-hour → 600 new hours ≈ 20-40 GPU-hours on two GPUs,
+  then the same scoring (both ASRs, UTMOS, speaker checks) and filtering; publish as BSSD v2 on the Hub
+  (same card constraints). Prepare + align + precompute latents.
+- Also: regenerate the 8 named-voice prompts' **long-form** material (so the teacher sees them more in
+  context) — small share, measurable on named-voice sim.
+Disk: VM2 is at 95 %; move the dataset-phase FLAC folders (21.5 GB) off or delete after confirming they
+are in the Hub release; a 24 L run needs ~15 GB headroom for checkpoints.
+
+## Stage 2 — Teacher v2 (VM2, ~1.5 days)
+
+- From the English 24 L model with `finetune_language.yaml` (reset text embedding; tokenizer retrained on
+  the v2 corpus) on BSSD v2, **cosine schedule to a known length** (120-150 k steps at batch 64) instead
+  of constant LR with early stopping; EMA 0.9999; evaluations every 10 k on the paired protocol with
+  CFG 2. Keep the checkpoint with the best paired score, not the last.
+- Then narrow to z 64 (PCA init as now) and **fine-tune the full 30 k steps**; gate: paired score within
+  noise of the un-narrowed teacher (Kyutai: UTMOS 4.24 vs 4.27). If 64 fails the gate, try 128 (their
+  ablation shows 128 ≈ 64).
+- Compute: ~3 steps/s → 150 k steps ≈ 14 h + 30 k ≈ 3 h. Disk ~5 GB per save (keep 2 + kept evals).
+
+## Stage 3 — Student v2, 8 L × 512 (VM2, ~1-2 days)
+
+- As before (seeded from the teacher along principal components, guided targets, heads frozen), but
+  trained until the validation distillation loss is flat for 25 k steps (plan 200 k, cosine to that),
+  evaluations every 25 k on the paired protocol with the hard subset.
+- Gate: paired CER/WER within CI of the 6 L model on both ASRs, failure rate ≤ 1 %, named-voice sim
+  within 0.005, listening ≥ 85 % same-or-better. If it fails on the hard subset only, go to Stage 3b.
+- 3b (only if needed): larger student, 8 L × 768 or 10 L × 640 (~30 M backbone), same procedure. Still
+  ~1.4× faster than 6 L; an honest size for our teacher/data if 512 cannot reach parity.
+
+## Stage 4 — Heads (VM1 while Stage 3 evaluates)
+
+- **EOS head recalibration**: fine-tune only `out_eos` on the student's frozen backbone (minutes), then
+  evaluate with the default threshold; no inference threshold hacks in the release config.
+- Sampler head: distil the 0.84 M drifting head (Kyutai: no quality cost); gate on the paired protocol.
+- Decoder: keep the standard Mimi decoder unless the 2.6 M one is faster in the target runtime (it is
+  not in PyTorch); re-test it inside the WASM engine only for the browser build.
+
+## Stage 5 — Reward fine-tuning (VM2, ½ day)
+
+ReFL with UTMOS and the Basque wav2vec2 CTC likelihood as rewards, distillation loss as anchor,
+3 k steps; monitor pitch range (F0 std on the listening set) and reject if it narrows by > 0.3 semitones.
+
+## Stage 6 — Release
+
+Paired report (3 seeds), listening pass, CPU benchmarks (PyTorch and WASM), voice states, card, Hub repo
+`itzune/pocket-tts-basque-small` (replacing the staged candidate), demo page update. Then, optionally,
+the gradual cuts towards 7 M with the same gates.
+
+## Timeline and sequencing
+
+| days | VM1 | VM2 |
+|---|---|---|
+| 1 | Stage 0 protocol + baselines | BSSD v2 text pool, voice bank extension |
+| 2-5 | generation + scoring (half the shards) | generation + scoring (other half) |
+| 6 | align, latents, publish v2 | teacher v2 starts |
+| 7 | — | teacher v2 (cont.) + narrowing |
+| 8-9 | student evaluations as they land | student v2 |
+| 10 | EOS/head work, benchmarks | (3b if needed) |
+| 11 | ReFL, release | — |
+
+About two weeks of calendar time with the 8:00 shutdowns, mostly unattended. The stage gates are the
+places to stop and reconsider; nothing after Stage 1 is started without the previous gate passing.
+
+## Open decisions (user)
+
+1. Data target: 1,000 h (plan) or more; and whether BSSD v2 is published as a new version.
+2. Teacher: fine-tune from English 24 L as now (plan) vs. from scratch (Kyutai's path; needs far more data
+   and ~4× the compute; not recommended at 1,000 h).
+3. Whether the current staged "small" model should be uploaded as an interim release or dropped. Plan: drop.

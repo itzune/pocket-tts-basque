@@ -61,7 +61,7 @@ The training code is the official `kyutai-labs/pocket-tts` repository (v3.3.0, `
 next to this one; the configs here extend its `finetune_language.yaml` and `depth_distill.yaml`. Run helpers
 for a small single-GPU box (resume after crashes, evaluation loop, W&B sidecar, memory guard) are in
 `scripts/` as well. `RESEARCH.md` is the initial survey (why Pocket TTS, why OmniVoice as the data teacher)
-and `TRAINING_PLAN.md` the plan plus the complete run log with every number and incident; `TRAINING_PLAN_SMALL.md` is the follow-up plan for 18M/7M models with Kyutai's shrinking recipe.
+and `TRAINING_PLAN.md` the plan plus the complete run log with every number and incident; `TRAINING_PLAN_SMALL.md` is the first attempt at the 18M model with Kyutai's shrinking recipe and `TRAINING_PLAN_V2.md` the plan to redo it properly from the data up.
 
 ## Demo page
 
