@@ -1,0 +1,121 @@
+{
+ "summary": {
+  "named": {
+   "wer": 0.1266,
+   "cer": 0.0917,
+   "utmos": 3.5022,
+   "spk_sim": 0.9512,
+   "rtf": 0.4583,
+   "n": 128,
+   "fail_rate": 0.0938,
+   "wer_median": 0.0,
+   "wer_ok": 0.0605
+  },
+  "held_out": {
+   "wer": 0.1352,
+   "cer": 0.1027,
+   "utmos": 3.5468,
+   "spk_sim": 0.9418,
+   "rtf": 0.4637,
+   "n": 80,
+   "fail_rate": 0.1125,
+   "wer_median": 0.0,
+   "wer_ok": 0.0652
+  }
+ },
+ "per_voice": {
+  "Aitor": {
+   "wer": 0.078,
+   "cer": 0.058,
+   "utmos": 3.486,
+   "spk_sim": 0.96,
+   "fails": 1
+  },
+  "Maider": {
+   "wer": 0.111,
+   "cer": 0.105,
+   "utmos": 3.976,
+   "spk_sim": 0.949,
+   "fails": 2
+  },
+  "Nahia": {
+   "wer": 0.037,
+   "cer": 0.01,
+   "utmos": 3.506,
+   "spk_sim": 0.96,
+   "fails": 0
+  },
+  "bank0070": {
+   "wer": 0.188,
+   "cer": 0.144,
+   "utmos": 3.156,
+   "spk_sim": 0.924,
+   "fails": 2
+  },
+  "Ane": {
+   "wer": 0.175,
+   "cer": 0.123,
+   "utmos": 3.44,
+   "spk_sim": 0.939,
+   "fails": 2
+  },
+  "bank0027": {
+   "wer": 0.135,
+   "cer": 0.081,
+   "utmos": 3.599,
+   "spk_sim": 0.944,
+   "fails": 2
+  },
+  "Jon": {
+   "wer": 0.191,
+   "cer": 0.137,
+   "utmos": 3.473,
+   "spk_sim": 0.955,
+   "fails": 2
+  },
+  "eum_08886": {
+   "wer": 0.098,
+   "cer": 0.083,
+   "utmos": 3.595,
+   "spk_sim": 0.94,
+   "fails": 1
+  },
+  "bank0083": {
+   "wer": 0.144,
+   "cer": 0.114,
+   "utmos": 3.45,
+   "spk_sim": 0.946,
+   "fails": 2
+  },
+  "Antton": {
+   "wer": 0.242,
+   "cer": 0.188,
+   "utmos": 3.664,
+   "spk_sim": 0.955,
+   "fails": 3
+  },
+  "Unai": {
+   "wer": 0.105,
+   "cer": 0.065,
+   "utmos": 2.826,
+   "spk_sim": 0.942,
+   "fails": 1
+  },
+  "Mikel": {
+   "wer": 0.074,
+   "cer": 0.048,
+   "utmos": 3.648,
+   "spk_sim": 0.95,
+   "fails": 1
+  },
+  "euf_05679": {
+   "wer": 0.111,
+   "cer": 0.093,
+   "utmos": 3.934,
+   "spk_sim": 0.956,
+   "fails": 2
+  }
+ },
+ "config": "configs/basque_18m_infer.yaml",
+ "checkpoint": "/root/runs/basque_18m/checkpoint_00075000.pt"
+}

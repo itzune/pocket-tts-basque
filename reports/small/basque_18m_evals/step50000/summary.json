@@ -1,0 +1,121 @@
+{
+ "summary": {
+  "named": {
+   "wer": 0.2347,
+   "cer": 0.1521,
+   "utmos": 3.2715,
+   "spk_sim": 0.9426,
+   "rtf": 0.4674,
+   "n": 128,
+   "fail_rate": 0.2109,
+   "wer_median": 0.0769,
+   "wer_ok": 0.083
+  },
+  "held_out": {
+   "wer": 0.2739,
+   "cer": 0.1729,
+   "utmos": 3.2223,
+   "spk_sim": 0.9404,
+   "rtf": 0.4687,
+   "n": 80,
+   "fail_rate": 0.25,
+   "wer_median": 0.125,
+   "wer_ok": 0.0996
+  }
+ },
+ "per_voice": {
+  "Unai": {
+   "wer": 0.164,
+   "cer": 0.117,
+   "utmos": 2.736,
+   "spk_sim": 0.933,
+   "fails": 2
+  },
+  "Nahia": {
+   "wer": 0.075,
+   "cer": 0.035,
+   "utmos": 3.258,
+   "spk_sim": 0.957,
+   "fails": 0
+  },
+  "bank0027": {
+   "wer": 0.157,
+   "cer": 0.065,
+   "utmos": 3.443,
+   "spk_sim": 0.948,
+   "fails": 2
+  },
+  "eum_08886": {
+   "wer": 0.202,
+   "cer": 0.152,
+   "utmos": 3.202,
+   "spk_sim": 0.95,
+   "fails": 3
+  },
+  "Maider": {
+   "wer": 0.169,
+   "cer": 0.116,
+   "utmos": 3.787,
+   "spk_sim": 0.948,
+   "fails": 3
+  },
+  "Antton": {
+   "wer": 0.504,
+   "cer": 0.337,
+   "utmos": 3.23,
+   "spk_sim": 0.923,
+   "fails": 9
+  },
+  "bank0070": {
+   "wer": 0.398,
+   "cer": 0.219,
+   "utmos": 2.837,
+   "spk_sim": 0.93,
+   "fails": 7
+  },
+  "euf_05679": {
+   "wer": 0.381,
+   "cer": 0.295,
+   "utmos": 3.47,
+   "spk_sim": 0.949,
+   "fails": 6
+  },
+  "Ane": {
+   "wer": 0.214,
+   "cer": 0.146,
+   "utmos": 3.314,
+   "spk_sim": 0.947,
+   "fails": 3
+  },
+  "bank0083": {
+   "wer": 0.23,
+   "cer": 0.133,
+   "utmos": 3.16,
+   "spk_sim": 0.926,
+   "fails": 2
+  },
+  "Mikel": {
+   "wer": 0.183,
+   "cer": 0.076,
+   "utmos": 3.433,
+   "spk_sim": 0.945,
+   "fails": 2
+  },
+  "Aitor": {
+   "wer": 0.154,
+   "cer": 0.073,
+   "utmos": 3.315,
+   "spk_sim": 0.959,
+   "fails": 2
+  },
+  "Jon": {
+   "wer": 0.416,
+   "cer": 0.315,
+   "utmos": 3.099,
+   "spk_sim": 0.931,
+   "fails": 6
+  }
+ },
+ "config": "configs/basque_18m_infer.yaml",
+ "checkpoint": "/root/runs/basque_18m/checkpoint_00050000.pt"
+}

@@ -182,3 +182,19 @@ appended to this file.
   punctuation-only last word cuts the target) — 15 of 200k utterances, negligible. #398 retrained their
   small models on audiobook + conversational data (no change to the recipe itself). Nothing to change in
   our run; pull v4.0.1 before the next stage.
+- 2026-10-21 22:16 UTC: 18M distillation finished (100k). Quick eval @100k: named 0.119 / UTMOS 3.50 /
+  sim 0.951, held-out 0.133 / 3.55 / 0.935, failures 23/208 — plateau vs 75k.
+- 2026-10-21 23:20 UTC: 40/voice comparison (Whisper/Conformer):
+  | model | voices | WER | failure rate | WER-ok | UTMOS | sim |
+  |---|---|---|---|---|---|---|
+  | 6 L 150k (released) | named | 0.049 / 0.040 | 1.3 % | 0.040 | 3.48 | 0.960 |
+  | | held-out | 0.029 / 0.030 | 0.5 % | 0.026 | 3.50 | 0.957 |
+  | 18M 100k EMA | named | 0.112 / 0.097 | 6.9 % | 0.066 | 3.46 | 0.952 |
+  | | held-out | 0.113 / 0.106 | 8.0 % | 0.063 | 3.49 | 0.942 |
+  | 18M 100k raw | named | 0.110 / 0.092 | 6.9 % | 0.065 | 3.47 | 0.952 |
+  | | held-out | 0.115 / 0.117 | 10.0 % | 0.050 | 3.48 | 0.941 |
+  EMA and raw are now equivalent. **Failure analysis: 30 of 38 failures are early stops** (the start of
+  the sentence read correctly, then end of speech, e.g. "Hala ere," for a full sentence), 0 prompt
+  continuations, 8 other. The EOS head is the teacher's, frozen; it reads the student's z, which is
+  slightly off. Testing a higher inference eos_threshold (default −4) on the failed set + 40 control
+  sentences. Reports in `reports/small/`.

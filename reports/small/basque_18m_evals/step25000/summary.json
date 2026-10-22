@@ -1,0 +1,121 @@
+{
+ "summary": {
+  "named": {
+   "wer": 0.5257,
+   "cer": 0.2646,
+   "utmos": 3.1858,
+   "spk_sim": 0.9471,
+   "rtf": 0.461,
+   "n": 128,
+   "fail_rate": 0.4688,
+   "wer_median": 0.5,
+   "wer_ok": 0.3591
+  },
+  "held_out": {
+   "wer": 0.5254,
+   "cer": 0.2459,
+   "utmos": 3.2829,
+   "spk_sim": 0.9468,
+   "rtf": 0.4589,
+   "n": 80,
+   "fail_rate": 0.4,
+   "wer_median": 0.4834,
+   "wer_ok": 0.352
+  }
+ },
+ "per_voice": {
+  "Unai": {
+   "wer": 0.639,
+   "cer": 0.362,
+   "utmos": 2.578,
+   "spk_sim": 0.913,
+   "fails": 10
+  },
+  "bank0027": {
+   "wer": 0.5,
+   "cer": 0.251,
+   "utmos": 3.321,
+   "spk_sim": 0.947,
+   "fails": 8
+  },
+  "Mikel": {
+   "wer": 0.485,
+   "cer": 0.217,
+   "utmos": 3.362,
+   "spk_sim": 0.941,
+   "fails": 6
+  },
+  "Antton": {
+   "wer": 0.497,
+   "cer": 0.237,
+   "utmos": 3.375,
+   "spk_sim": 0.948,
+   "fails": 6
+  },
+  "Nahia": {
+   "wer": 0.526,
+   "cer": 0.304,
+   "utmos": 2.999,
+   "spk_sim": 0.962,
+   "fails": 7
+  },
+  "eum_08886": {
+   "wer": 0.498,
+   "cer": 0.237,
+   "utmos": 3.354,
+   "spk_sim": 0.96,
+   "fails": 7
+  },
+  "Ane": {
+   "wer": 0.507,
+   "cer": 0.263,
+   "utmos": 3.14,
+   "spk_sim": 0.965,
+   "fails": 6
+  },
+  "Jon": {
+   "wer": 0.555,
+   "cer": 0.267,
+   "utmos": 3.281,
+   "spk_sim": 0.948,
+   "fails": 10
+  },
+  "Maider": {
+   "wer": 0.549,
+   "cer": 0.27,
+   "utmos": 3.536,
+   "spk_sim": 0.946,
+   "fails": 9
+  },
+  "bank0083": {
+   "wer": 0.442,
+   "cer": 0.196,
+   "utmos": 3.206,
+   "spk_sim": 0.944,
+   "fails": 4
+  },
+  "Aitor": {
+   "wer": 0.447,
+   "cer": 0.196,
+   "utmos": 3.216,
+   "spk_sim": 0.954,
+   "fails": 6
+  },
+  "euf_05679": {
+   "wer": 0.46,
+   "cer": 0.183,
+   "utmos": 3.514,
+   "spk_sim": 0.948,
+   "fails": 6
+  },
+  "bank0070": {
+   "wer": 0.727,
+   "cer": 0.363,
+   "utmos": 3.019,
+   "spk_sim": 0.935,
+   "fails": 7
+  }
+ },
+ "config": "configs/basque_18m_infer.yaml",
+ "checkpoint": "/root/runs/basque_18m/checkpoint_00025000.pt"
+}
