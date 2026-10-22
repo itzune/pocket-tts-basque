@@ -5,9 +5,10 @@ Inputs are Pocket TTS manifests ({path, duration, transcript} per line):
   --v1        v1 train manifest (synthetic; rows whose transcript contains a palatal are dropped, the
               data teacher mispronounces them)
   --v2        v2 synthetic manifests from package.py (already palatal-free at job creation)
-  --real      real-speech manifest from package_real.py; repeated --real-repeat times, and rows with a
-              palatal repeated --palatal-repeat times (over-sampling, since real speech is the only
-              source of correct palatals)
+  --real      real-speech manifest from package_real.py. Decision 2026-10-22 (user, by ear): the studio
+              recordings pronounce the palatals correctly but have flat read-speech prosody, so real
+              speech is used ONLY for what it is needed for: by default just the HiTZ rows containing a
+              palatal (--real-sources hitz, --real-repeat 0), each repeated --palatal-repeat times.
 Writes <out>/train.jsonl (shuffled, seed 0) and <out>/stats.json. dev/test stay v1's.
 
   python scripts/build_v2_manifest.py --v1 /root/data/bssd/train.jsonl --v2 /root/data/bssd_v2/synth/manifest-*.jsonl \
@@ -25,7 +26,9 @@ def read(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--v1", required=True); ap.add_argument("--v2", nargs="*", default=[]); ap.add_argument("--real", required=True)
-    ap.add_argument("--real-repeat", type=int, default=2); ap.add_argument("--palatal-repeat", type=int, default=4)
+    ap.add_argument("--real-repeat", type=int, default=0, help="repeats for real rows WITHOUT palatals (0 = only palatal rows are used)")
+    ap.add_argument("--palatal-repeat", type=int, default=2)
+    ap.add_argument("--real-sources", default="hitz", help="comma-separated text_src values of real rows to use (e.g. hitz,slr76)")
     ap.add_argument("--out", required=True); a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
     stats = {}
     v1 = read(a.v1); keep = [r for r in v1 if not PALATAL.search(r["transcript"].lower())]
@@ -34,7 +37,9 @@ def main():
     v2 = [r for pat in a.v2 for p in sorted(glob.glob(pat)) for r in read(p)]
     stats["v2"] = {"rows": len(v2), "hours": round(sum(r["duration"] for r in v2) / 3600, 1)}
     rows += [dict(r, src="v2") for r in v2]
-    real = read(a.real); n_pal = 0
+    srcs = {x.strip() for x in a.real_sources.split(",") if x.strip()}
+    real = [r for r in read(a.real) if (r.get("text_src") or ("hitz" if "hitz_" in r["path"] else "slr76")) in srcs]
+    n_pal = 0
     for r in real:
         rep = a.real_repeat
         if PALATAL.search(r["transcript"].lower()):

@@ -169,3 +169,11 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   question-sentence weakness (hard-set "question" CER 0.048 vs 0.004 for small). Both are new, specific,
   measurable targets for v2. Protocol note: the ASR-based gate must be complemented by the blind listening
   protocol; CER on the hard-set tags (palatal, numbers, names, question) is the most sensitive automatic signal.
+- 2026-10-22 ~17:40 UTC: user listened to 24 real palatal clips (`samples/real_palatal/`): Maider/Antton
+  pronounce tt/dd/ll correctly but with flat, Piper-like prosody and lower perceived quality (UTMOS says
+  otherwise — Maider 3.72, Antton 3.51 vs synthetic p50 3.48 — so UTMOS does not capture prosody; SLR76
+  crowd audio is 3.19, p10 2.62). **Decision**: real speech is a pronunciation source only, not a style
+  source — v2 training uses just the HiTZ rows that contain a palatal (1,493 rows ≈ 2 h, repeated ×2),
+  no other real rows, no SLR76 audio (`build_v2_manifest.py` defaults). The palatal tag of the hard set
+  tells whether that is enough; if not, raise the repeat before adding non-palatal real rows. The real
+  corpora stay packaged for the BSSD v2 release as a separate `real` config.
