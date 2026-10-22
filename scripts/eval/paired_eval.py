@@ -26,6 +26,7 @@ def main():
     ap.add_argument("--held-out", default="bank0027,bank0083,bank0070,euf_05679,eum_08886")
     ap.add_argument("--seeds", type=int, default=1); ap.add_argument("--out", required=True)
     ap.add_argument("--eos-threshold", type=float, default=None)
+    ap.add_argument("--all-voices", action="store_true", help="every voice reads every sentence (default: each sentence is read by one named and one held-out voice, chosen deterministically)")
     a = ap.parse_args()
     from pocket_tts import TTSModel
     from bssd.scoring import UTMOS, BasqueASR, SpeakerEmbedder, cer, cosine, wer
@@ -50,12 +51,23 @@ def main():
         done = {(r["voice_id"], r["set"], r["idx"], r["seed"]) for r in map(json.loads, open(outp))}
     fh = open(outp, "a")
     t_all = time.time()
+    named_ids = [p[0] for p in prompts if p[2] == "named"]; held_ids = [p[0] for p in prompts if p[2] == "held_out"]
+
+    def reads(vid, kind, sname, i):
+        if a.all_voices:
+            return True
+        off = 0 if sname == "main" else 7
+        pool = named_ids if kind == "named" else held_ids
+        return pool[(i + off) % len(pool)] == vid
+
     for pi, (vid, ppath, kind) in enumerate(prompts):
         state = model.get_state_for_audio_prompt(ppath)
         pa, _ = load(ppath, 16000); pemb = spk.embed(pa)
         ptext = next((json.loads(l).get("text", "") for l in open(a.named) if json.loads(l)["voice_id"] == vid), "")
         for sname, sents in sets.items():
             for i, text in enumerate(sents):
+                if not reads(vid, kind, sname, i):
+                    continue
                 for seed in range(a.seeds):
                     if (vid, sname, i, seed) in done:
                         continue

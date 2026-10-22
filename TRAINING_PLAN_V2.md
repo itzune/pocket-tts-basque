@@ -118,3 +118,22 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
 2. Teacher: fine-tune from English 24 L as now (plan) vs. from scratch (Kyutai's path; needs far more data
    and ~4× the compute; not recommended at 1,000 h).
 3. Whether the current staged "small" model should be uploaded as an interim release or dropped. Plan: drop.
+
+## Log
+
+- 2026-10-22 14:00 UTC: both VMs up. Disk freed (local copies of the published release and the dataset-phase
+  audio deleted: VM1 89 GB free, VM2 50 GB). Exclusion list of 468k already-synthesised sentences built.
+  VM1: Pocket TTS v4.0.1 env, test split pulled, frozen eval sets (main 400 test sentences; hard 169 dev
+  sentences tagged palatal/g_j/names/numbers/question/long), baseline paired evals of the 6 L and small
+  models started (each sentence read by one named + one held-out voice, seed-matched). Voice bank round 3
+  (2,000 candidates) and the v3 text pool (1.3 M target, all-new sentences, ≤ 40 words) building on VM1.
+- 2026-10-22 14:40 UTC: **pronunciation probe of the data teacher** (`scripts/small/pron_probe.py`, curated
+  native words, Maider/Antton prompts, Whisper-eu check): OmniVoice reads "Antton" as "Anton" 16/16,
+  "pittin" as "pitin", "onddo" as "ondo" 6/8, "Pello"/"ollo" with Spanish ll (→ "tejo", "oiho"); ñ, j
+  (initial/medial), ge/gi, x and tz/ts/tx are fine. So BSSD v1 contains no correct palatal "tt/dd/ll" and
+  the released model cannot have learned them (user's observation; Piper, phoneme-based, gets them right).
+  Two fixes being tested: (1) generation-side respellings that make OmniVoice produce the palatal while the
+  transcript keeps the standard spelling (probe 3 running); (2) **real studio speech as training data**: the
+  HiTZ-Aholab corpus (Zenodo 17952596, CC BY 4.0, two speakers, 16 GB WAV, explicitly covers "tt" and other
+  Basque-specific spellings) + OpenSLR 76 (7,136 utterances, CC BY-SA 4.0), both already licensed for this
+  use; downloading HiTZ to VM1. Listening page: `samples/pron_probe/index.html`.
