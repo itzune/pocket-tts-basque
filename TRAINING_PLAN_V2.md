@@ -137,3 +137,9 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   HiTZ-Aholab corpus (Zenodo 17952596, CC BY 4.0, two speakers, 16 GB WAV, explicitly covers "tt" and other
   Basque-specific spellings) + OpenSLR 76 (7,136 utterances, CC BY-SA 4.0), both already licensed for this
   use; downloading HiTZ to VM1. Listening page: `samples/pron_probe/index.html`.
+- 2026-10-22 15:10 UTC: respelling probe (6 palatal words × 4-7 spellings × Maider/Antton, ASR hint): "dd" can
+  be coaxed ("ondyo"/"onddyo"/"ondjo" → heard as "onddo"); "tt" cannot (Antyon → "antzio/antxo", Anttyon,
+  Antxon, Anchon → "antson/antxon": affricates, never the palatal stop); "ll" and "Maddi" unchanged.
+  Conclusion: OmniVoice has no /c/, so generation-side respelling cannot fix "tt"; the fix is real speech
+  (HiTZ-Aholab explicitly covers "tt") in the training mix, with sentences containing palatals
+  over-sampled, plus the palatal tag in the hard set as the gate. Clips: `samples/pron_probe/index.html`.
