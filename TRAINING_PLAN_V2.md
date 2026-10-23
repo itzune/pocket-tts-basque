@@ -187,3 +187,8 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   single pieces (`/root/data/bssd_v2/tokenizer/basque_v2.model`, 4000 pieces). Day-1 state: generation
   v12/v17 at shard ~7/10 on both VMs; nothing else running. Tomorrow: wait for generation + scoring →
   package v2 synthetic (per VM) → pull to VM2 → `build_v2_manifest.py` → align + latents → teacher v2.
+- 2026-10-23: VMs were off from ~08:00 to ~21:15 local (13 h lost). Reboot resume worked unattended on both:
+  gen_queue skipped the finished runs and resumed v15 at shard 4 (VM1) and v20 at shard 5 (VM2), scoring
+  and Conformer loops restarted. Done before the shutdown: v12-v14 (VM1), v17-v19 (VM2) = ~297k rows.
+  Remaining: v15 (7 shards), v20 (6) + v16 (10). Primary scoring lags (~2 shards/h while sharing the GPU):
+  22 shards left on VM1, 31 on VM2 → scoring finishes about a day after generation. Schedule slips ~1 day.
