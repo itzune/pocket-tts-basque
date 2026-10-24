@@ -213,3 +213,13 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   checkpoints (2.4 GB each) are offloaded to the other VM (`/root/runs/basque_24l_v2_keep`), keeping the
   two newest locally. The dataset venv on the training VM is gone: v16–v20 parquet packaging must wait
   for a small reinstall or happen elsewhere.
+- 2026-10-24 17:05 local: **teacher v2 running** on the training VM (`/root/runs/basque_24l_v2`, W&B run
+  basque_24l_v2): 3.1 it/s, GPU 87 %, host RAM 6 GB used. Config `configs/basque_24l_v2.yaml`: 24 L from
+  the English checkpoint, tokenizer v2, merged manifest 707,439 rows / 928 h (v1 − palatal 345,269; vm1
+  160,037; vm2 199,985; HiTZ palatal 716 ×3), lr 2e-4 cosine, 150k steps, EMA 0.9999. Eval every 10k
+  (named + held-out), evaluated checkpoints offloaded to the other VM. The v12–v15 FLAC restore from the
+  parquet shards runs alongside (32/81 shards at launch; the loader skips those rows until each shard lands).
+  ETA 150k ≈ 06:30–07:30 local 2026-10-25, i.e. at the 08:00 shutdown boundary; resumes from the last
+  checkpoint at power-on if cut. Side incident: the laptop relay of the palatal FLACs into the VM's `/`
+  re-owned `/root` and locked SSH out (fixed from the console), and
+  the console session hit a qxl display-driver stall that hung logind → VM rebooted (16:57 local).
