@@ -232,3 +232,7 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   Antton 0.13. Keeping 0.9999 (right for 150k); EMA evals become meaningful from ~30k (5 % init) and
   faithful from 50k. Side incidents: both VMs hit the qxl console-driver stall → logind hang → SSH stalls
   after auth; fixed by reboots (17:00 training VM, 18:47 the other); avoid long console sessions.
+- 2026-10-24 19:35 local: v12–v15 FLAC restore on the training VM complete (160,037 files, matches the vm1
+  manifest); from here every row of the merged manifest is readable. 20k EMA eval: named 0.217 / held-out
+  0.327 (lag fading as predicted). Disk on the training VM 90 % with 21 GB free (steady state: 2 trainer
+  checkpoints + 2 kept evaluated ones, the rest offloaded).
