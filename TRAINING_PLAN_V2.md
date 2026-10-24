@@ -198,3 +198,6 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   parquet files, 160,037 rows, 6,550 voices, 20 GB, not uploaded); their FLACs deleted afterwards (the
   parquet holds the audio, the latents the training representation) to make room for 24 L checkpoints.
   Waiting for VM2's prep chain (starts when v16 scoring ends), then merge + teacher v2 launch.
+- 2026-10-24 12:20 local: VM2 scoring done; its prep chain running (199,985 kept rows, 267.4 h; keep rate 81 %).
+  v2 synthetic total = 360,022 rows / 480.9 h. Launch chain armed: VM2 part → VM1 → merge (v1 − palatal,
+  vm1, vm2, HiTZ palatal ×3) → teacher v2. Expected launch ~16:30 local.
