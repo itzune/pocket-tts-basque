@@ -192,3 +192,9 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   and Conformer loops restarted. Done before the shutdown: v12-v14 (VM1), v17-v19 (VM2) = ~297k rows.
   Remaining: v15 (7 shards), v20 (6) + v16 (10). Primary scoring lags (~2 shards/h while sharing the GPU):
   22 shards left on VM1, 31 on VM2 → scoring finishes about a day after generation. Schedule slips ~1 day.
+- 2026-10-24 12:00 local: VM1 parts ready: `synth_vm1_aligned_latents.jsonl` (160,037 rows, 213.5 h, latents
+  1.5 GB) and `real_pal_aligned_latents.jsonl` (716 rows, 1.0 h); v1 assets copied in (`/root/data/bssd`,
+  Mimi hash 29335a05 matches). VM1's runs packaged for the Hub release (`/root/data/release_v2/vm1`: 81
+  parquet files, 160,037 rows, 6,550 voices, 20 GB, not uploaded); their FLACs deleted afterwards (the
+  parquet holds the audio, the latents the training representation) to make room for 24 L checkpoints.
+  Waiting for VM2's prep chain (starts when v16 scoring ends), then merge + teacher v2 launch.
