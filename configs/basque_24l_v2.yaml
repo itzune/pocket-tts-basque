@@ -9,7 +9,7 @@ start_from_pretrained: true
 reset_text_embedding: true
 
 data:
-  train_jsonl: /root/data/bssd_v2/train_aligned.jsonl
+  train_jsonl: /root/data/bssd_v2/train_v2_aligned_latents.jsonl   # merged latents manifest (scripts/merge_v2_latents.py)
   valid_jsonl: /root/data/bssd/dev_aligned.jsonl
   max_duration_sec: 30.0
   max_voice_prompt_sec: 5.0
