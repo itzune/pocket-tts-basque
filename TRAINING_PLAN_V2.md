@@ -223,3 +223,12 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   checkpoint at power-on if cut. Side incident: the laptop relay of the palatal FLACs into the VM's `/`
   re-owned `/root` and locked SSH out (fixed from the console), and
   the console session hit a qxl display-driver stall that hung logind → VM rebooted (16:57 local).
+- 2026-10-24 19:00 local: **10k eval of teacher v2 reads WER 0.84 — an EMA artefact, not a training problem.**
+  `ema_decay` is 0.9999 (phase 1: 0.999) and the eval loop loads the EMA shadow; at 10k the shadow still holds
+  37 % of the initial weights (random text embedding) → fluent babble (UTMOS 3.73, sim 0.956). Check: the
+  same checkpoint's raw weights evaluated on the other VM (`eval_raw10k`) give named WER 0.184 / held-out
+  0.184 (median 0.08, fail 13 %), i.e. phase-1 level at 10k (0.162 / 0.155). Mean is driven by the known
+  unstable voices (Mikel 0.56, Jon 0.48, two bank voices 0.33–0.38); Maider/Ane/Nahia/Aitor 0.05–0.06,
+  Antton 0.13. Keeping 0.9999 (right for 150k); EMA evals become meaningful from ~30k (5 % init) and
+  faithful from 50k. Side incidents: both VMs hit the qxl console-driver stall → logind hang → SSH stalls
+  after auth; fixed by reboots (17:00 training VM, 18:47 the other); avoid long console sessions.
