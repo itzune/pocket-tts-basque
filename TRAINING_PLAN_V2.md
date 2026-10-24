@@ -201,3 +201,15 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
 - 2026-10-24 12:20 local: VM2 scoring done; its prep chain running (199,985 kept rows, 267.4 h; keep rate 81 %).
   v2 synthetic total = 360,022 rows / 480.9 h. Launch chain armed: VM2 part → VM1 → merge (v1 − palatal,
   vm1, vm2, HiTZ palatal ×3) → teacher v2. Expected launch ~16:30 local.
+- 2026-10-24 16:30 local: **first teacher v2 launch (on the 30 GB VM) was invalid and killed.** The loader
+  still opens every utterance's audio in latents mode (a short window for the voice prompt / stitch), and
+  that VM only held the real palatal audio: 77 % of rows were skipped ("skipping unreadable sample"),
+  speed 0.35 it/s, i.e. training on 716 sentences. Run folder and cron removed; nothing else affected.
+  Lesson: precomputed latents remove the Mimi encode, not the audio reads → the training host needs all
+  FLACs. **Training host = the 15 GB VM again** (it holds the v1 FLACs and its own v2 runs): pruned 20 GB
+  there (z64/18M-init/eval dirs, dataset + NeMo venvs); copying the other VM's latents (1.5 GB), the merged
+  manifest and the 716 palatal FLACs; restoring v12–v15 FLACs from the v2 parquet shards (20 GB, streamed
+  one shard at a time; the loader picks the rows up as the files appear, no restart needed). Evaluated
+  checkpoints (2.4 GB each) are offloaded to the other VM (`/root/runs/basque_24l_v2_keep`), keeping the
+  two newest locally. The dataset venv on the training VM is gone: v16–v20 parquet packaging must wait
+  for a small reinstall or happen elsewhere.
