@@ -240,3 +240,5 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   (phase-1 teacher at 40k: 0.093 / 0.048; its final pick). Phase 1 was noisy from 40k on (50k 0.115/0.121,
   60k 0.037/0.094, 70k 0.114/0.213) with a constant lr; v2 has cosine decay and the slow EMA, so later evals
   should be smoother. UTMOS 3.62 / 3.65, sim 0.959 / 0.965.
+- 2026-10-24 23:15 local: teacher v2 EMA evals: 50k 0.080 / 0.083, **60k 0.041 / 0.062** (named / held-out WER),
+  UTMOS 3.63 / 3.68, sim 0.960 / 0.964. Run stable (3.0 it/s, no restarts); 10k–30k checkpoints offloaded.
