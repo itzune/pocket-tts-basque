@@ -236,3 +236,7 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   manifest); from here every row of the merged manifest is readable. 20k EMA eval: named 0.217 / held-out
   0.327 (lag fading as predicted). Disk on the training VM 90 % with 21 GB free (steady state: 2 trainer
   checkpoints + 2 kept evaluated ones, the rest offloaded).
+- 2026-10-24 21:20 local: teacher v2 EMA evals (named / held-out WER): 30k 0.166 / 0.207, **40k 0.076 / 0.083**
+  (phase-1 teacher at 40k: 0.093 / 0.048; its final pick). Phase 1 was noisy from 40k on (50k 0.115/0.121,
+  60k 0.037/0.094, 70k 0.114/0.213) with a constant lr; v2 has cosine decay and the slow EMA, so later evals
+  should be smoother. UTMOS 3.62 / 3.65, sim 0.959 / 0.965.
