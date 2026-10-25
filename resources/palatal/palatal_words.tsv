@@ -1,0 +1,210 @@
+# Basque words with palatal digraphs (tt, dd, ll). Sources: Euskaltzaindiaren Hiztegia (EH, 'contains' search for dd/tt/ll),
+# Orotariko Euskal Hiztegia (OEH), EODA names, hunspell-eu, eu.wikipedia (sentence counts). category: native | dialectal | name | loan-es | loan-name.
+word	digraph	category	eh_marks	eh_def	eh_examples	wiki_sent	source	note
+onddo	dd	native	Heg.	Hostorik, sustrairik ez zurtoinik ez duen organismo mota apala, berez lekuz ezin	5	3435	EH/OEH/EODA	EH Heg.; fungus/mushroom; also onddo beltz, onddo zuri, onddo-saltsa, onddoketari
+onddo beltz	dd	native		Txapel arre iluna eta oin lodi horixka dituen onddo handia	1	3435	EH/OEH/EODA	EH subentry
+onddo zuri	dd	native		Txapel marroixka eta oin lodi zurixka dituen onddo handia	2	3435	EH/OEH/EODA	EH subentry
+onddo-saltsa	dd	native			0	0	EH/OEH/EODA	EH usage note
+onddoketari	dd	native		Basoan onddoak biltzen dituen pertsona.	1	0	EH/OEH/EODA	EH
+anddere	dd	native	adkor.	Anderea.	2	0	EH/OEH/EODA	EH (Ipar., jas.) lady
+anddereder	dd	native	Ipar.	Erbinudea.	0	0	EH/OEH/EODA	EH weasel
+sorddes	dd	native	Ipar.	Pertsonez mintzatuz, gaiztoa; lotsagabea.	5	0	EH/OEH/EODA	EH deaf-ish
+sorddeski	dd	native	Ipar.	Gaizki.	0	0	EH/OEH/EODA	EH
+sorddestu	dd	native	Ipar.,da,du	Txarragotu, okerragotu.	0	0	EH/OEH/EODA	EH
+Maddi	dd	name			0	200	EH/OEH/EODA	Basque given name (EODA); frequent in wiki
+Maddalen	dd	name			0	163	EH/OEH/EODA	Basque given name (EODA)
+ddanddan	dd	dialectal			0	0	EH/OEH/EODA	OEH: ddinddin-ddanddan (R) 'campanilla'; child speech
+ddandda	dd	dialectal			0	0	EH/OEH/EODA	OEH (R) child speech 'church'
+ddinddi	dd	dialectal			0	0	EH/OEH/EODA	OEH (R-uzt) child speech 'money'
+ddinddil	dd	dialectal			0	0	EH/OEH/EODA	OEH v. dindil
+ddunddu	dd	dialectal			0	0	EH/OEH/EODA	OEH v. dundu
+ddalanddal	dd	dialectal			0	0	EH/OEH/EODA	OEH v. dalan-dalan
+ttipi	tt	native	Ipar.,jas.	Txikia.	3	54	EH	
+ttipi-ttapa	tt	native	adkor.	Urrats aski labur eta lasterrez.	2	60	EH	
+ttipitu	tt	native	Ipar.,da,du,jas.	Ttipi edo ttipiago bihurtu.	2	0	EH	
+ttipian	tt	native	Ipar.,jas.	Txikitan.	1	0	EH	
+ttipitik	tt	native	Ipar.,jas.	Haurtzarotik.	2	0	EH	
+eri ttipi	tt	native	Ipar.	Hatz txikia.	0	1	EH	
+ahatettipi	tt	native		Zertzeta.	0	0	EH	
+ttiki-ttaka	tt	native	adkor.	Tiki-taka.	1	4	EH	
+ttantta	tt	native	adkor.	Tanta.	4	11	EH	
+ttanttaka	tt	native	adkor.	Gutxika-gutxika, apurka.	3	4	EH	
+ttotta	tt	native	adkor.	Pattarra; pattar xorta.	2	0	EH	
+ttak	tt	native		Kolpe txiki edo arin baten onomatopeia.	3	0	EH	
+ttaka-ttaka	tt	native	adkor.	Urrats aski labur eta lasterrez.	1	0	EH	
+ttakun	tt	native		Txalaparta jotzean ateratzen den hotsaren onomatopeia.	2	0	EH	
+ttapa-ttapa	tt	native	adkor.	Tapa-tapa.	1	0	EH	
+ttarro	tt	native	Ipar.,adkor.	Tarroa.	3	0	EH	
+ttattar	tt	native			0	5	EH	
+ttau-ttau	tt	native		Txakurkume baten edo txakur txiki baten zaunkaren onomatopeia.	0	0	EH	
+ttentte	tt	native	adkor.	Tente.	4	1	EH	
+ttintta	tt	native	Ipar.,adkor.,naf.	Isurkari kantitate txikia.	2	0	EH	
+ttintta bat	tt	native	Ipar.,adkor.,naf.	Pixka bat.	2	0	EH	
+ttirriki-ttarraka	tt	native	adkor.	Tirriki-tarraka.	1	0	EH	
+ttirritta	tt	native	Ipar.	Txitxarra.	1	2	EH	
+ttuku-ttuku	tt	native	Ipar.,adkor.,naf.	Urrats labur geldian.	2	0	EH	
+ttunttun	tt	native	adkor.	Tuntuna, danbolina.	1	29	EH	
+ttuntturro	tt	native	adkor.	Tunturroa.	1	5	EH	
+pottoka	tt	native		Euskal Herriko zaldi txikia, bereziki erdi basa.	1	260	EH	
+pottoko	tt	native		Behorraren kume arra.	1	62	EH	
+pottorro	tt	native		Berrogei zentimetro inguruko itsas hegaztia, mokoa beltza eta sendoa, aurpegiare	1	21	EH	
+pott	tt	native	adkor.	Musua.	1	927	EH	
+pott egin	tt	native	adkor.,du	Musu eman.	1	927	EH	
+pott eman	tt	native	adkor.,du	Musu eman.	2	927	EH	
+kuttun	tt	native	adkor.	Kutuna, maitea.	2	202	EH	
+kutturlio	tt	native		Hegatxabalaren antzeko hegazti motoduna	1	10	EH	
+muttiko	tt	native	adkor.	Mutikoa.	1	0	EH	
+muttur	tt	native	Ipar.,adkor.,naf.	Muturra, giza aurpegiaren ezpain aldea.	4	0	EH	
+pittin	tt	native	adkor.	Apurra, kopuru guztiz txikia.	4	89	EH	
+pittin bat	tt	native	adkor.	Pitin bat.	6	89	EH	
+pittinka	tt	native	adkor.	Pitinka.	1	0	EH	
+pitta	tt	native	Ipar.,naf.	Pixka.	0	45	EH	
+pitta bat	tt	native	Ipar.,naf.	Pixka bat.	6	45	EH	
+pattal	tt	native	Heg.	Ahula, makala, indargabea.	8	16	EH	
+pattalaldi	tt	native	Heg.	Ahulaldia, makalaldia.	1	0	EH	
+pattaldu	tt	native	Heg.,da	Ahuldu, makaldu.	1	0	EH	
+pattar	tt	native		Ardoaren edo beste zenbait gairen destilaziotik ateratzen den edari bizia.	3	134	EH	
+pettar	tt	native		Pettarkoa, Pettarrari dagokiona.	0	58	EH	
+puttiko	tt	native	Ipar.,adkor.	Putikoa.	1	0	EH	
+puntta	tt	native	adkor.	Punta.	2	4	EH	
+punttu	tt	native	adkor.	Zenbait ezaugarri, sentipen edo emozioz mintzatuz, kantitate txikia.	4	17	EH	
+panttupa	tt	native	Ipar.	Muinoa; muino baten gailurra.	0	0	EH	
+mottel	tt	native	Ipar.,adkor.,naf.	Motela.	2	10	EH	
+gutti	tt	native			0	28	EH	
+batto	tt	native	adkor.	Bat.	1	4	EH	
+beretter	tt	native	Ipar.	Meza mutila, meza-laguntzailea.	1	1	EH	
+entterka	tt	native	Ipar.	Barrenkoia.	0	0	EH	
+aitzinttoan	tt	native	Ipar.	Lehentxeago.	3	0	EH	
+deabrutto	tt	native	adkor.	Deabrua.	0	0	EH	
+eguntto	tt	native	adkor.	Eguna.	1	1	EH	
+gizontto	tt	native	Ipar.	Gizon txikia; (adkor.) gizona.	1	0	EH	
+erregetto	tt	native	g. er.	Erregetxoa (agintaria).	0	0	EH	
+erregepittitta	tt	native	Ipar.	Erregetxoa (hegaztia).	0	0	EH	
+kottear	tt	native			0	0	EH	
+ttonttor	tt	native			0	17	hunspell/wiki/EODA	hunspell/wiki; peak, hump
+tanttaka	tt	native			0	50	hunspell/wiki/EODA	wiki; drop by drop (also theatre company)
+ttun-ttun	tt	native			0	64	hunspell/wiki/EODA	wiki; string drum / dance
+ttarttalo	tt	name			0	53	hunspell/wiki/EODA	wiki; Tartalo cyclops / publisher
+pintto	tt	name			0	9	hunspell/wiki/EODA	wiki; dog name, children's song
+punttudun	tt	native			0	7	hunspell/wiki/EODA	wiki; dotted (music)
+pottolo	tt	native			0	4	hunspell/wiki/EODA	hunspell; chubby
+herritto	tt	native			0	0	hunspell/wiki/EODA	hunspell; diminutive -tto
+menditto	tt	native			0	0	hunspell/wiki/EODA	hunspell
+liburutto	tt	native			0	1	hunspell/wiki/EODA	hunspell
+mehetto	tt	native			0	0	hunspell/wiki/EODA	hunspell
+xumetto	tt	native			0	0	hunspell/wiki/EODA	hunspell
+urdetto	tt	native			0	0	hunspell/wiki/EODA	hunspell
+ttottel	tt	native			0	0	hunspell/wiki/EODA	hunspell? stutterer (totel)
+kotta	tt	native			0	10	hunspell/wiki/EODA	hunspell
+mottodun	tt	native			0	38	hunspell/wiki/EODA	hunspell
+atturri	tt	name			0	52	hunspell/wiki/EODA	wiki; Adour river
+Antton	tt	name			0	380	hunspell/wiki/EODA	Basque given name; very frequent
+Anttoni	tt	name			0	17	hunspell/wiki/EODA	Basque given name
+Mattin	tt	name			0	169	hunspell/wiki/EODA	Basque given name
+Kattalin	tt	name			0	73	hunspell/wiki/EODA	Basque given name
+Battitta	tt	name			0	13	hunspell/wiki/EODA	Basque given name
+Bittor	tt	name			0	162	hunspell/wiki/EODA	Basque given name
+Pettiri	tt	name			0	11	hunspell/wiki/EODA	Basque given name
+pollit	ll	native	adkor.	Polita.	3	7	EH	
+polliki	ll	native	adkor.	Poliki, aski egoki edo ederki.	6	0	EH	
+llabur	ll	native	adkor.	Laburra.	1	0	EH	
+llollo	ll	native		Olo gaiztoa; iraka, landare kaltegarria.	2	5	EH	
+llollobelar	ll	native			0	6	EH	
+pello	ll	native		Gizonezkoez mintzatuz, kaikua, zozoa.	1	818	EH	
+pellokeria	ll	native		Guztiz agerikoa edo jakina denez, ergelkeria dirudien baieztapena; ergelkeria.	1	1	EH	
+kokollo	ll	native	haur.	Txokolatea.	0	0	EH	
+llaburbide	ll	native			0	0	hunspell/wiki/EODA	hunspell
+polliki-polliki	ll	native			0	0	hunspell/wiki/EODA	reduplication
+ollo	ll	dialectal			0	223	hunspell/wiki/EODA	Bizk. oilo (hen); also place name Ollo
+bollo	ll	dialectal			0	22	hunspell/wiki/EODA	hunspell? bun
+Ellande	ll	name			0	7	hunspell/wiki/EODA	Basque given name
+Tafalla	ll	name			0	860	hunspell/wiki/EODA	Navarre town
+Mallabia	ll	name			0	116	hunspell/wiki/EODA	Biscay town
+Olloki	ll	name			0	73	hunspell/wiki/EODA	Navarre village
+Ollaran	ll	name			0	99	hunspell/wiki/EODA	Navarre
+Allo	ll	name			0	415	hunspell/wiki/EODA	Navarre town
+Allotz	ll	name			0	16	hunspell/wiki/EODA	Navarre
+Atallu	ll	name			0	10	hunspell/wiki/EODA	Navarre
+Andollu	ll	name			0	4	hunspell/wiki/EODA	Alava
+Billabona	ll	name			0	62	hunspell/wiki/EODA	Gipuzkoa town
+Arzalluz	ll	name			0	84	hunspell/wiki/EODA	surname
+Azpillaga	ll	name			0	37	hunspell/wiki/EODA	surname
+Amillaga	ll	name			0	1	hunspell/wiki/EODA	surname
+Telleria	ll	name			0	301	hunspell/wiki/EODA	surname
+Gallastegi	ll	name			0	210	hunspell/wiki/EODA	surname
+Txillardegi	ll	name			0	306	hunspell/wiki/EODA	writer
+Txillida	ll	name			0	196	hunspell/wiki/EODA	Basque spelling of Chillida
+Ollarandar	ll	name			0	1	hunspell/wiki/EODA	demonym
+amilla	ll	loan-es		Jaka, gainjantzia.	1	18	EH	Spanish loan, palatal ll in Basque
+arpillera	ll	loan-es		Iztupazko ehun latza, zakuak-eta egiteko erabiltzen dena.	2	5	EH	Spanish loan, palatal ll in Basque
+arrallant	ll	loan-es		Alaia.	2	0	EH	Spanish loan, palatal ll in Basque
+arranparrilla	ll	loan-es		Burdinazko barra paraleloz osaturiko tresna kirtenduna, janariak surtan prestatz	2	2	EH	Spanish loan, palatal ll in Basque
+artillari	ll	loan-es		Artilleriako militarra.	1	8	EH	Spanish loan, palatal ll in Basque
+artilleria	ll	loan-es	mil.	Kanoiek eta kidekoek osatzen duten gerra-tresneria; armadan, tresneria horrezaz 	2	736	EH	Spanish loan, palatal ll in Basque
+bainilla	ll	loan-es			0	5	EH	Spanish loan, palatal ll in Basque
+balazta-pastilla	ll	loan-es			0	3	EH	Spanish loan, palatal ll in Basque
+banderilla	ll	loan-es	Heg.,g. g. er.	Zerrenda koloretsuz apainduriko makila, burdinazko punta duena eta zezenketetan 	2	10	EH	Spanish loan, palatal ll in Basque
+banilla	ll	loan-es		Banilla-landarearen leka usaintsua, janariak lurrintzeko erabiltzen dena.	3	59	EH	Spanish loan, palatal ll in Basque
+billar	ll	loan-es			0	70	EH	Spanish loan, palatal ll in Basque
+billete	ll	loan-es		Diru papera.	1	310	EH	Spanish loan, palatal ll in Basque
+billano	ll	loan-es		Enkarterriko billanoa.	0	49	EH	Spanish loan, palatal ll in Basque
+bollera	ll	loan-es	Heg.,lgart.	Lesbiana.	2	12	EH	Spanish loan, palatal ll in Basque
+bonbilla	ll	loan-es	Heg.	Elektrizitatearen bidez argi egiten duen kristalezko esfera modukoa.	1	89	EH	Spanish loan, palatal ll in Basque
+erroskilla	ll	loan-es		Barruan zuloa duen opil gozoa.	1	9	EH	Spanish loan, palatal ll in Basque
+eskotilla	ll	loan-es	Heg.	Itsasontzi baten ontzigainean, barnera sartu ahal izateko egiten den irekigunea.	4	3	EH	Spanish loan, palatal ll in Basque
+eskuadrilla	ll	loan-es	mil.	Buruzagi batek gidaturik hegaldi berean parte hartzen duten hegazkinen multzoa.	2	7	EH	Spanish loan, palatal ll in Basque
+estribillo	ll	loan-es			0	10	EH	Spanish loan, palatal ll in Basque
+flotilla	ll	loan-es		Ontzi txikiz osaturiko ontzidia.	1	17	EH	Spanish loan, palatal ll in Basque
+folletoi	ll	loan-es		Egunkari eta kidekoetan, idazlan literarioak zatika argitaratzen diren atala; at	2	10	EH	Spanish loan, palatal ll in Basque
+galleta	ll	loan-es	Heg.	Irinez, gurinez, arrautzaz eta beste zenbait osagaiz eginiko jakia, zapala, trin	5	94	EH	Spanish loan, palatal ll in Basque
+galtzontzillo	ll	loan-es	Heg.	Gizonezkoen azpiko galtzak, gehienetan galtza motzen antzekoak izaten direnak.	1	0	EH	Spanish loan, palatal ll in Basque
+garrotillo	ll	loan-es	Heg.,g. er.	Difteria.	0	1	EH	Spanish loan, palatal ll in Basque
+gerrilla	ll	loan-es		Ohiko armadaz kanpo antolatutako jende talde armatua, ekintza mugatuak eta irisp	1	1229	EH	Spanish loan, palatal ll in Basque
+gerrillari	ll	loan-es		Gerrilla batean dabilen pertsona.	1	624	EH	Spanish loan, palatal ll in Basque
+gillotina	ll	loan-es		Heriotzara kondenatuei lepoa mozteko tresna, bi zutaberen artean erortzen den xa	3	159	EH	Spanish loan, palatal ll in Basque
+gillotinatu	ll	loan-es	du	Gillotinan hil.	1	45	EH	Spanish loan, palatal ll in Basque
+gresilla	ll	loan-es		Arranparrilla.	1	3	EH	Spanish loan, palatal ll in Basque
+karilloi	ll	loan-es		Melodia bat jotzen duen kanpai multzoa, bereziki erloju bati, orduak jotzeko, at	2	9	EH	Spanish loan, palatal ll in Basque
+kartilla	ll	loan-es	Heg.,beh.	Liburuxka, bereziki diru kontuak edo gorde nahi diren bestelako oharrak idazteko	1	5	EH	Spanish loan, palatal ll in Basque
+kasulla	ll	loan-es		Apaizak meza emateko albaren gainetik jartzen duen jantzia, alboetatik irekia de	1	3	EH	Spanish loan, palatal ll in Basque
+kotilloi	ll	loan-es	Heg.	Zenbait egun berezitan, bereziki Urtezahar gauean, egiten den festa handia.	1	1	EH	Spanish loan, palatal ll in Basque
+kuadrilla	ll	loan-es	Heg.,beh.	Arabako probintzia banatzen den eskualdeetako bakoitza.	3	359	EH	Spanish loan, palatal ll in Basque
+lentilla	ll	loan-es		Ukipen leiarra, ikusmena hobetzeko begian ezartzen dena.	1	16	EH	Spanish loan, palatal ll in Basque
+makillaje	ll	loan-es		Makillatzeko erabiltzen den kosmetikoa.	2	207	EH	Spanish loan, palatal ll in Basque
+makillatu	ll	loan-es	da,du	Aurpegia kosmetikoekin margotu edo itxuraldatu.	1	5	EH	Spanish loan, palatal ll in Basque
+makillatzaile	ll	loan-es		Makillatze-lanetan aritzen den pertsona.	1	43	EH	Spanish loan, palatal ll in Basque
+mantzanilla	ll	loan-es	Heg.	Sanlúcar de Barramedan eta inguruan egiten den ardo zuria.	3	0	EH	Spanish loan, palatal ll in Basque
+menbrillo	ll	loan-es	Heg.	Irasagarra.	1	1	EH	Spanish loan, palatal ll in Basque
+natilla	ll	loan-es	Heg.	Ahi arin baten antzeko trinkotasuna duen jaki gozoa, arrautza, azukrea eta esnea	1	9	EH	Spanish loan, palatal ll in Basque
+nobillada	ll	loan-es		Zekorketa.	1	7	EH	Spanish loan, palatal ll in Basque
+paella	ll	loan-es		Arrozez, okelaz, arrainez eta abarrez prestatzen den jakia, jatorriz Valentziako	1	35	EH	Spanish loan, palatal ll in Basque
+parrilla	ll	loan-es	Heg.	Arranparrilla.	1	71	EH	Spanish loan, palatal ll in Basque
+parrillada	ll	loan-es	Heg.	Arranparrillan erretako arrain, itsaski, okela edo barazki sorta batekin prestat	1	0	EH	Spanish loan, palatal ll in Basque
+parrillero	ll	loan-es	Heg.	Jatetxe eta kidekoetan, janariak arranparrillan prestatzen dituen pertsona.	1	4	EH	Spanish loan, palatal ll in Basque
+pasillo	ll	loan-es	Heg.	Korridorea.	0	18	EH	Spanish loan, palatal ll in Basque
+pastilla	ll	loan-es		Pilula.	2	41	EH	Spanish loan, palatal ll in Basque
+patilla	ll	loan-es	Heg.	Aurpegiaren albo banatan, belarrien aurrealdean hazten den ilea edo bizarra.	1	3	EH	Spanish loan, palatal ll in Basque
+pella	ll	loan-es	naf.	Jaki gozoa, irinez, esnez, azukrez eta gurinez eginiko ore zatiak frijituz prest	1	49	EH	Spanish loan, palatal ll in Basque
+pikillo	ll	loan-es		Pikillo piperra.	3	18	EH	Spanish loan, palatal ll in Basque
+plantilla	ll	loan-es	Heg.	Enpresa edo erakunde bateko langileak.	3	57	EH	Spanish loan, palatal ll in Basque
+puntilla	ll	loan-es	Heg.	Parpaila.	2	4	EH	Spanish loan, palatal ll in Basque
+silla	ll	loan-es	Heg.,beh.	Aulkia.	1	269	EH	Spanish loan, palatal ll in Basque
+tailla	ll	loan-es		Taillatzea; taillatzearen emaitza.	2	74	EH	Spanish loan, palatal ll in Basque
+taillatu	ll	loan-es	du	Zura, harria edo kideko gai bat landu, bertan ebakiak, koskak edo markak eginez.	2	14	EH	Spanish loan, palatal ll in Basque
+tallarin	ll	loan-es		Jateko pasta, eskuarki gari irinez egina, zerrenda luze eta zapal baten forma du	1	0	EH	Spanish loan, palatal ll in Basque
+tempranillo	ll	loan-es		Mahatsondo mota, batez ere ardo beltza egiteko erabiltzen den mahatsa ematen due	3	14	EH	Spanish loan, palatal ll in Basque
+toalla	ll	loan-es	Heg.	Eskuoihala.	1	18	EH	Spanish loan, palatal ll in Basque
+tokilla	ll	loan-es	Heg.	Artilezko jantzia, emakumeek sorbalda gainean jartzen dutena edo ume txiki baten	1	1	EH	Spanish loan, palatal ll in Basque
+tortilla	ll	loan-es	Heg.	Arrautzopila.	1	77	EH	Spanish loan, palatal ll in Basque
+trainerilla	ll	loan-es	kirol.	Traineru txikia, sei arraunlarik eta patroiak mugitzen dutena.	1	222	EH	Spanish loan, palatal ll in Basque
+txintxilla	ll	loan-es		Hego Amerikan bizi den ugaztun karraskaria, katagorriaren antzekoa, bere ile leu	1	5	EH	Spanish loan, palatal ll in Basque
+brillante	ll	loan-es		Berrogeita hemezortzi aurpegitan ebaki edo landutako diamante landua.	1	21	EH	Spanish loan, palatal ll in Basque
+Sevilla	ll	loan-name			0	3318	wiki	Spanish place; pronounced palatal in Basque
+Castilla	ll	loan-name			0	329	wiki	
+Valladolid	ll	loan-name			0	1797	wiki	
+Mallorca	ll	loan-name			0	1087	wiki	
+Murillo	ll	loan-name			0	450	wiki	
+Trujillo	ll	loan-name			0	217	wiki	
+Melilla	ll	loan-name			0	213	wiki	
+Villanueva	ll	loan-name			0	372	wiki	
+Villa	ll	loan-name			0	4952	wiki	Spanish 'villa-' names
