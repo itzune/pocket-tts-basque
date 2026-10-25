@@ -242,3 +242,14 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   should be smoother. UTMOS 3.62 / 3.65, sim 0.959 / 0.965.
 - 2026-10-24 23:15 local: teacher v2 EMA evals: 50k 0.080 / 0.083, **60k 0.041 / 0.062** (named / held-out WER),
   UTMOS 3.63 / 3.68, sim 0.960 / 0.964. Run stable (3.0 it/s, no restarts); 10k–30k checkpoints offloaded.
+- 2026-10-25 07:50 local: **teacher v2 finished** (150k steps, ~14 h, no restarts). EMA evals (named / held-out WER):
+  80k 0.049 / 0.055, 90k 0.035 / 0.033, 100k 0.027 / 0.038, 110k 0.019 / 0.037, 120k 0.027 / 0.027,
+  130k 0.017 / 0.030, 140k 0.019 / 0.034, **150k 0.025 / 0.023** (CER 0.008 / 0.007, **failure rate 0 % / 0 %**,
+  UTMOS 3.63 / 3.70, sim 0.961 / 0.966). Phase-1 teacher (40k): 0.093 / 0.048, fail 3.5–5.3 %; phase-1 student:
+  0.049 / 0.029. Per voice at 150k all ≤ 0.056 — the formerly unstable Mikel/Jon/Unai read 0.027 / 0.052 / 0.0,
+  Antton 0.032, Maider 0.0. Candidates for the pick: 130k (best named) vs 150k (best held-out, end of cosine);
+  decide with the paired eval + listening (Stage 0 protocol) once the VMs are back. Checkpoints: 70k–150k in
+  `keep/` on the training VM (10k–60k offloaded); its disk is at 99 % → first job after power-on: offload
+  70k–150k, drop `optim_00150000.pt` only after the narrowing stage has started from 150k.
+  Laptop-side watchers paused ~01:10–07:40 (suspend), so the offloader fell behind; no effect on the run.
+  Next: Stage 2 narrowing (z_dim 64, 30k steps) from the picked teacher; paired eval teacher v2 vs v1.
