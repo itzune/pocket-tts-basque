@@ -260,3 +260,12 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   whole 24 L) repeat all 27 dd rows ×20 and add a dd probe set (onddo, Maddi, baddago, eddo, kuddu…) to the
   listening page; if dd is still wrong after that, evaluate Piper TTS Basque (pronounces palatals right, worse
   prosody) as a dd-only pronunciation source, gated by listening before training on it.
+
+### 2026-10-25 10:30 — palatal inventory, dd scoped down to onddo
+- Mined every reference source for tt/dd/ll words: Euskaltzaindiaren Hiztegia "contains" search (16 dd / 87 tt / 189 ll headwords),
+  OEH, hunspell-eu, eu.wikipedia. Result in `resources/palatal/palatal_words.tsv` (207 words) and
+  `resources/palatal/palatal_sentences.tsv` (1,657 sentences, 528 from Euskaltzaindia/EEH/Elhuyar examples).
+- dd is essentially three word families in standard Basque (onddo, anddere, sorddes) plus the names Maddi/Maddalen;
+  no spoken "onddo" exists in any corpus we hold. Decision: the dd goal is "onddo pronounced right" (same bar as the tt
+  fix for Antton). Recording set: `resources/palatal/onddo_recording_set.txt` (80 sentences, ~5 min of speech); ingest
+  like the HiTZ palatal set, repeat in the narrowing manifest, judge by listening + an onddo/ondo forced-choice probe.

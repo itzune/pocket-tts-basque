@@ -1,0 +1,81 @@
+# onddo recording set: one sentence per line, read naturally; sources in order Euskaltzaindiaren Hiztegia, EEH, Elhuyar, eu.wikipedia.
+001	Ez dute zeruraino doan onddo itxurako gar hodeirik ikusi.
+002	Laster ikusi genituen alde orotan sortzen beren baitarik, onddoak iduri, libroak erraten zieten ikastetxeak.
+003	Oihan xoko frankotatik saskiak onddoz beterik ateratzen ikus zitezkeen onddoketariak.
+004	Onddo saltsarekin egindako hanburgerra.
+005	Onddo xehe batek dakarren eritasuna.
+006	Onddo zuriak oliba-oliotan.
+007	Onddo zuriaren usaina oso atsegina da eta zaporea, hurrek dutenaren antzekoa.
+008	Onddoak bezala sortzen ziren kultura erakunde publikoak.
+009	Onddoak izan nahi ez dituenak dutxarako gomazko sandaliak erabili beharko ditu.
+010	Pixkanaka-pixkanaka onddo-saltsa bota, arroza egosi arte.
+011	Udazkenean, ira ebakitzerakoan, onddoak ugari.
+012	Uhartea oparoa da onddotan; onddo beltzak nonahi daude.
+013	Aurten onddo urte zela ezin uka, halere gure xokoan atxemana izan den hau bezalakoak bakan ditazke.
+014	Bai, zinez, larrazken huntan jastatu ahal izan dugun onddo platarik gozagarriena ginuen hor, ahotik ezin utzia!
+015	Baina Otsabideko mendietan, sasoiz kanpoko onddo biltzaile ugari gurutzatzen zutela ohartzen ziren.
+016	Baliteke tatuajeak egiteko baliatzen den tinta mota baten hainbat sorta onddoekin kutsatuta egotea.
+017	Denda beltz eta gorri ilunen kanpamendu handiak sortu ziren, onddo multzo higuingarriak bezalakoak.
+018	Eta onddoak sortuz gero, akabo pintura.
+019	Giza gorputza prestatuta dago hainbat mikrobio, birus, bakterio, onddo eta parasitok kalterik egin ez diezaioten.
+020	Gizakiaren lehenbiziko eztanda nuklearraren lekuko eta sortzaile, Robertek estu aztertu zuen hamaika kilometroko onddo atomikoa.
+021	Gustura eta lasai joan den hilabetean mendian onddo bila sartu dituzun orduak.
+022	Herriko nekazariak, erlezain autonomoak, gozogile artisauak, onddo-biltzaileak, txalupako arrantzaleak.
+023	Jantokitik etorrita, onddo-kapela marroiko gizon bat ate birakaritik sartu zen.
+024	Jendea arras polliki ihizi eta onddo sasoi huntan oraino Garazin.
+025	Karratutako soinekoaz, betiko bibotearekin, eta bere onddo-kapeluari eskuineko eskuaz helduz.
+026	Onddo gorri haluzinagarriaren kontsumoa.
+027	Onddo nahaski beroaren arrastoa oraindik ahoan, Damian, aulkia atzerantz botata, zutitu egin da.
+028	Onddo txiki-txikiek hartzen zuten osorik kanpoaldea, erlaitzetik zabaltzen zen armiarma-sare mehe bat bailiran.
+029	Onddo ustelen usain berezia iritsi zitzaidan sudur zuloetara.
+030	Onddo zurizten haztegi eta armiarma iheskorren gordeleku.
+031	Onddo-kapela jantzita eta beroki azpian plaka bana duten gizon batzuek ere ez naitek bakean uzten.
+032	Onddoen pare, Omordiako bide bazterrean, agertzen ari dire hargintza gotor batzu.
+033	Saltsak, saltsa-oinarriak, onddo-hondoak, oreak, horrelako oreak etxean prestatzeko lehengai eta tramankuluak.
+034	Udazkena beroa izan zen, baina lehorra, eta ez zen apenas onddorik sortu.
+035	Behin onddoaren oinpean, malda etzanagoa eta errimaia sakonera gutxiagoa duenez, ezkerrera desbideratzen gara.
+036	aurten onddo asko omen dago eta horregatik daude merke
+037	onddo asko bizkarroiak dira
+038	onddoak ditu oinetan
+039	Adibidez, likena bizidun sinbiotikoa da: onddoa eta alga dira likena eratzen duten sinbionteak.
+040	Aflatoxinak hainbat onddok ekoizten dituzten toxina kaltegarriak dira.
+041	Aipatutako funtzio hauek beharrezkoak dira, likenizatutako onddoetan.
+042	Aitzitik, onddoek landareak infektatzen dituzte sarritan.
+043	Ale zatitu egosia gehiago erabiltzen da arrainetan, haragietan, patatekin batera edota onddoetan.
+044	Amanita, Galerina eta Lepiota generoetako onddo-espezie batzuetan daude, eta Conocybe filaris espeziean.
+045	Animali zein onddoetan kitina substantzia agertzen baita.
+046	Animalia eta onddoek elkarrekin Opisthokonta talde monofiletikoa eratzen dute.
+047	Animaliez gain, onddoetan eta protistoetan intsulinaren antzeko proteinak daudela ere badakigu.
+048	Arrunta da Melampsora epitea onddoa ere, hostoetan, soro laranja oso deigarriak eragiten ditu.
+049	Ascomycota filumeko onddoek asku izeneko zaku itxurako egituretan eratzen dituzte esporak.
+050	Askotan, Boletus edulis onddotik hurbil ernamuintzen denez, “salatari” ere deitzen zaio.
+051	Aspergillus onddoa lizunen taldean sailkatzen da, hifa luzeak baititu.
+052	Astigarrak onddoek sortutako gaixotasun sorta handi batez kalte daitezke.
+053	Azkenik, azpimarratu behar da ere onddoek betetzen duten zeregin onuragarria medikuntzan, antibiotiko askoren ekoizpenaren atzean baitaude.
+054	Badirudi onddoak ezinbestekoak zirela landareetara ura zein nutrienteak helarazteko eta onddoek trukean konposatu karbonodunak jasotzen zituztela.
+055	Bestalde, interes handia dago mikorrizazioan onddoen fruitu gorputzak kultibatzeko helburuarekiko.
+056	Beste batzuek ordea, zapore gozoagoa eta gustagarriagoa dute, adibide gisa ditugu onddobeltza, zizahoria edo gibelurdina.
+057	Bi haustorio edo onddoaren sartze-organo desberdintzen dira: intrazelularrak eta intramintzakarak.
+058	Biologian, organismoa sistema biziduna da (animalia, landarea, onddoa edo mikroorganismoa).
+059	Elkarrekiko harremana da, landareek fotosintesitik datozen azukreak ematen baitizkiete onddoei.
+060	Elkarteari esker, onddoa eta alga gai dira independenteki bizitzeko desegokiak izango ziratekeen eremuak kolonizatzeko.
+061	Enbor zahar eta usteletan, hildako sustraietan, eta abarretan azaltzen da onddoa.
+062	Enbrioitik protokormorako trantsizioa emateko beharrezkoa da hazia onddoaren hifengatik kolonizatua izatea.
+063	Entzima horiek onddoei dakizkien azpiproduktuak dira, eta ondorio izugarriak dituzte atzean utzitako kutsadura garbitzeko.
+064	Era sexualean onddoaren bi hifa ezberdinak elkartzen dira, zigospora izeneko esporak sortuz.
+065	Etimologia: Agaricus hitza grezierazko “agarikon” hitzetik dator, perretxikoa, onddo-mota jakin batekoa, Dioscorides-en garaitik erabilitako izena.
+066	Euskal Herrian, tenperaturen igoerak onddoen jokabidea aldatu du.
+067	Familia horretako kideek, dirudienez, ez dituzte minbiziaren, bakterioen eta onddoen aurkako propietaterik.
+068	Gainera onddoekin eta legamiekin ere konplexuak eratzeko gaitasuna dute.
+069	Gainera, elkarrekintzak izan zituen onddoekin, eta elkarrekintza horiei esker, lehorreko estresetara moldatzea errazagoa izan zatekeen.
+070	Gametoen arteko desberdintasun funtzional mota batzuei (onddoetan, esaterako) ernalketa tipo deritze.
+071	Printze ttipia, anddere gisa beztiturik.
+072	Igandeko pausuaren hausle sorddesak.
+073	O, traidore madarikatua, Judas baino sorddesagoa!
+074	Elkarrengandik betiko bereizirik edo, sorddes, gehiago ez jakinik elkarren berri.
+075	Hainbat sorddes, joan ez garenentzat!
+076	Hirigune historikoaren bide nagusia Maddalen kalea da, Herriko Plaza osatuz zabaltzen den antzinako izkina.
+077	Erregeordea Maddalen Frantziakoa, errege berriaren ama, zen.
+078	Maddalenek tinko eutsi zuen Frantzia eta Gaztelako Erresumen presioa.
+079	Maddalenek gorriak ikusi zituen Gaztela eta Frantziak errege gaztea bere hautagaiekin ezkondu nahi zutelako.
+080	Katalinak, adin gutxikoa bera ere, ezin zuen gobernatu eta Maddalenek jarraitu zuen erregeorde.
