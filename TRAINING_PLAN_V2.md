@@ -253,3 +253,10 @@ places to stop and reconsider; nothing after Stage 1 is started without the prev
   70k–150k, drop `optim_00150000.pt` only after the narrowing stage has started from 150k.
   Laptop-side watchers paused ~01:10–07:40 (suspend), so the offloader fell behind; no effect on the run.
   Next: Stage 2 narrowing (z_dim 64, 30k steps) from the picked teacher; paired eval teacher v2 vs v1.
+- 2026-10-25 08:00 local: listening (user, 80k samples): palatals better than v1, **tt clearly better; dd still
+  wrong ("onddo")**. Cause = data gap, not model: the real palatal rows hold tt 582 occurrences (0.71 h), ll 186
+  (0.27 h), **dd 16 (0.03 h)** — and the whole real corpus (HiTZ + SLR76) has only 27 dd rows, almost all names
+  (Maddi, Maddalen, Freddie, Eddie); "onddo" never occurs. Plan: in Stage 2 (narrowing, which fine-tunes the
+  whole 24 L) repeat all 27 dd rows ×20 and add a dd probe set (onddo, Maddi, baddago, eddo, kuddu…) to the
+  listening page; if dd is still wrong after that, evaluate Piper TTS Basque (pronounces palatals right, worse
+  prosody) as a dd-only pronunciation source, gated by listening before training on it.
